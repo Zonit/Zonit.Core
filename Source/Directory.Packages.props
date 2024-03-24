@@ -3,6 +3,14 @@
 		<TargetFramework>net8.0</TargetFramework>
 		<ImplicitUsings>enable</ImplicitUsings>
 		<Nullable>enable</Nullable>
-		<OutputType>Library</OutputType>
+		<AssemblyVersion>0.0.3</AssemblyVersion>
+		<FileVersion>$(AssemblyVersion)</FileVersion>
+		<Version>$(AssemblyVersion)</Version>
+		<Authors>Zonit</Authors>
+		<Title>Zonit.Core</Title>
+		<PackageOutputPath>$(SolutionDir)Packages</PackageOutputPath>
+		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+		<PackageProjectUrl>https://github.com/Zonit</PackageProjectUrl>
+		<RepositoryUrl>https://github.com/Zonit/Zonit.Core</RepositoryUrl>
 	</PropertyGroup>
 </Project>

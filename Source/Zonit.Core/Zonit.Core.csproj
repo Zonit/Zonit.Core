@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<!--<PropertyGroup>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<IncludeContentInPack>false</IncludeContentInPack>
+	</PropertyGroup>-->
+
+
+	<ItemGroup>
+		<ProjectReference Include="..\Zonit.Core.Attributes\Zonit.Core.Attributes.csproj" />
+	</ItemGroup>
+
+</Project>
