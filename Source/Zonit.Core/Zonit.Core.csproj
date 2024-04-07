@@ -8,6 +8,7 @@
 
 	<ItemGroup>
 		<ProjectReference Include="..\Zonit.Core.Attributes\Zonit.Core.Attributes.csproj" />
+		<ProjectReference Include="..\Zonit.Core.Xml\Zonit.Core.Xml.csproj" />
 	</ItemGroup>
 
 </Project>
