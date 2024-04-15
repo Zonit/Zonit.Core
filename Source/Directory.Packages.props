@@ -1,16 +1,25 @@
 <Project>
-	<PropertyGroup>
-		<TargetFramework>net8.0</TargetFramework>
-		<ImplicitUsings>enable</ImplicitUsings>
-		<Nullable>enable</Nullable>
-		<AssemblyVersion>0.0.4</AssemblyVersion>
-		<FileVersion>$(AssemblyVersion)</FileVersion>
-		<Version>$(AssemblyVersion)</Version>
-		<Authors>Zonit</Authors>
-		<Title>Zonit.Core</Title>
-		<PackageOutputPath>$(SolutionDir)Packages</PackageOutputPath>
-		<GeneratePackageOnBuild>True</GeneratePackageOnBuild>
-		<PackageProjectUrl>https://github.com/Zonit</PackageProjectUrl>
-		<RepositoryUrl>https://github.com/Zonit/Zonit.Core</RepositoryUrl>
-	</PropertyGroup>
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyVersion>0.0.4</AssemblyVersion>
+    <FileVersion>$(AssemblyVersion)</FileVersion>
+    <Version>$(AssemblyVersion)</Version>
+    <Authors>Zonit</Authors>
+    <Title>Zonit.Core</Title>
+    <PackageOutputPath>$(SolutionDir)Packages</PackageOutputPath>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <PackageProjectUrl>https://github.com/Zonit</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/Zonit/Zonit.Core</RepositoryUrl>
+  </PropertyGroup>
+	
+  <ItemGroup>
+    <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="8.0.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.Abstractions" Version="8.0.4" />
+    <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.4" />
+    <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="8.0.1" />
+    <PackageVersion Include="Zonit.Abstractions" Version="0.0.1" />
+  </ItemGroup>
+	
 </Project>
