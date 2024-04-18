@@ -16,19 +16,17 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Core", "Source\Zonit.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Core.Xml", "Source\Zonit.Core.Xml\Zonit.Core.Xml.csproj", "{794091AF-1138-49EE-B0A5-A76036205E00}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Core.Databases", "Source\Zonit.Core.Databases\Zonit.Core.Databases.csproj", "{19BA0544-F3D0-49B2-B7A3-1163CDB89024}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{3B46835C-A1E6-4C0F-954B-F027AA91998B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{6F98B9AA-A97E-48CC-9668-B84B19E2508B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Databases.Abstractions", "Source\Extensions\Databases\Zonit.Extensions.Databases.Abstractions\Zonit.Extensions.Databases.Abstractions.csproj", "{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Databases.Abstractions", "Source\Extensions\Databases\Zonit.Extensions.Databases.Abstractions\Zonit.Extensions.Databases.Abstractions.csproj", "{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Databases.SqlServer", "Source\Extensions\Databases\Zonit.Extensions.Databases.SqlServer\Zonit.Extensions.Databases.SqlServer.csproj", "{C5FCCA9D-E4D1-4DDC-B7A8-14EE0C19E517}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Databases.SqlServer", "Source\Extensions\Databases\Zonit.Extensions.Databases.SqlServer\Zonit.Extensions.Databases.SqlServer.csproj", "{C5FCCA9D-E4D1-4DDC-B7A8-14EE0C19E517}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Databases.Test", "Source\Extensions\Databases\Zonit.Extensions.Databases.Test\Zonit.Extensions.Databases.Test.csproj", "{D3D77F55-7DE1-48DC-B551-DDD2997997D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Databases.Test", "Source\Extensions\Databases\Zonit.Extensions.Databases.Test\Zonit.Extensions.Databases.Test.csproj", "{D3D77F55-7DE1-48DC-B551-DDD2997997D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Databases.Examples", "Source\Extensions\Databases\Zonit.Extensions.Databases.Examples\Zonit.Extensions.Databases.Examples.csproj", "{12263B46-9E5E-4890-9C87-B08F0A0ED8EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Databases.Examples", "Source\Extensions\Databases\Zonit.Extensions.Databases.Examples\Zonit.Extensions.Databases.Examples.csproj", "{12263B46-9E5E-4890-9C87-B08F0A0ED8EA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +46,6 @@ Global
 		{794091AF-1138-49EE-B0A5-A76036205E00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{794091AF-1138-49EE-B0A5-A76036205E00}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{794091AF-1138-49EE-B0A5-A76036205E00}.Release|Any CPU.Build.0 = Release|Any CPU
-		{19BA0544-F3D0-49B2-B7A3-1163CDB89024}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{19BA0544-F3D0-49B2-B7A3-1163CDB89024}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{19BA0544-F3D0-49B2-B7A3-1163CDB89024}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{19BA0544-F3D0-49B2-B7A3-1163CDB89024}.Release|Any CPU.Build.0 = Release|Any CPU
 		{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -76,7 +70,6 @@ Global
 		{40E7885D-C361-4A7D-B050-1B5F6069DD9F} = {74FE44E4-5473-4509-98F0-1A303F8BF0C4}
 		{28D95C46-C419-4137-94AD-FC54DE722973} = {74FE44E4-5473-4509-98F0-1A303F8BF0C4}
 		{794091AF-1138-49EE-B0A5-A76036205E00} = {74FE44E4-5473-4509-98F0-1A303F8BF0C4}
-		{19BA0544-F3D0-49B2-B7A3-1163CDB89024} = {74FE44E4-5473-4509-98F0-1A303F8BF0C4}
 		{3B46835C-A1E6-4C0F-954B-F027AA91998B} = {74FE44E4-5473-4509-98F0-1A303F8BF0C4}
 		{6F98B9AA-A97E-48CC-9668-B84B19E2508B} = {3B46835C-A1E6-4C0F-954B-F027AA91998B}
 		{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6} = {6F98B9AA-A97E-48CC-9668-B84B19E2508B}
