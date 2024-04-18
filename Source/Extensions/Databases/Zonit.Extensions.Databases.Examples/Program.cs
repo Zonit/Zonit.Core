@@ -4,8 +4,7 @@ using Zonit.Extensions.Databases.Examples.Data;
 using Zonit.Extensions.Databases.SqlServer.DependencyInjection;
 using Zonit.Extensions.Databases.Examples.Repositories;
 using Microsoft.Extensions.Configuration;
-using Zonit.Extensions.Databases.Abstractions.Options;
-using Zonit.Extensions.Databases.Examples.Events;
+using Zonit.Extensions.Databases.Examples.Backgrounds;
 
 namespace Zonit.Extensions.Databases.Examples;
 
@@ -56,7 +55,8 @@ internal class Program
         builder.Services.AddTransient<IBlogRepository, BlogRepository>();
         builder.Services.AddTransient<IBlogsRepository, BlogsRepository>();
 
-        builder.Services.AddHostedService<BlogEvent>();
+        builder.Services.AddHostedService<BlogBackground>();
+        builder.Services.AddHostedService<BlogsBackground>();
 
         var app = builder.Build();
         app.Run();

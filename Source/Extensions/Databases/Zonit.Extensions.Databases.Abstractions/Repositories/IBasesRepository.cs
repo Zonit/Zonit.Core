@@ -6,7 +6,7 @@ namespace Zonit.Extensions.Databases.Abstractions.Repositories;
 /// 
 /// </summary>
 /// <typeparam name="T">Model name</typeparam>
-public interface IBasesRepository<T>
+public interface IBasesRepository<T> : IDisposable
 {
     IBasesRepository<T> Skip(int skip);
     IBasesRepository<T> Take(int take);

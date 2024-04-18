@@ -19,6 +19,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Extensions", "Extensions", "{3B46835C-A1E6-4C0F-954B-F027AA91998B}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Databases", "Databases", "{6F98B9AA-A97E-48CC-9668-B84B19E2508B}"
+	ProjectSection(SolutionItems) = preProject
+		Source\Extensions\Databases\Readme.md = Source\Extensions\Databases\Readme.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Databases.Abstractions", "Source\Extensions\Databases\Zonit.Extensions.Databases.Abstractions\Zonit.Extensions.Databases.Abstractions.csproj", "{90EC2ADF-9C6E-4934-A3C1-AF3C38E2AAD6}"
 EndProject

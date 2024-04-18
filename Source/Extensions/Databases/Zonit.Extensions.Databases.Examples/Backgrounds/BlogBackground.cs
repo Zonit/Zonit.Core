@@ -3,12 +3,11 @@ using Microsoft.Extensions.Logging;
 using Zonit.Extensions.Databases.Examples.Entities;
 using Zonit.Extensions.Databases.Examples.Repositories;
 
-namespace Zonit.Extensions.Databases.Examples.Events;
+namespace Zonit.Extensions.Databases.Examples.Backgrounds;
 
-internal class BlogEvent(
+internal class BlogBackground(
     IBlogRepository _blogRepository,
-    IBlogsRepository _blogsRepository,
-    ILogger<BlogEvent> _logger
+    ILogger<BlogBackground> _logger
     ) : BackgroundService
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
@@ -17,7 +16,7 @@ internal class BlogEvent(
         var createBlog = await _blogRepository.AddAsync(new Blog
         {
             Title = "Hello World",
-            Content = "Hello World"
+            Content = "Example content"
         });
 
         _logger.LogInformation("Create: {Id} {Title} {Content} {Created}", createBlog.Id, createBlog.Title, createBlog.Content, createBlog.Created);

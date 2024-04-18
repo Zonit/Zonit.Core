@@ -1,5 +1,10 @@
-﻿namespace Zonit.Extensions.Databases.Examples.Repositories;
+﻿using Microsoft.EntityFrameworkCore;
+using Zonit.Extensions.Databases.Examples.Data;
+using Zonit.Extensions.Databases.Examples.Entities;
+using Zonit.Extensions.Databases.SqlServer.Repositories;
 
-internal class BlogsRepository : IBlogsRepository
+namespace Zonit.Extensions.Databases.Examples.Repositories;
+
+internal class BlogsRepository(IDbContextFactory<DatabaseContext> _context) : BasesRepository<Blog, DatabaseContext>(_context), IBlogsRepository
 {
 }
