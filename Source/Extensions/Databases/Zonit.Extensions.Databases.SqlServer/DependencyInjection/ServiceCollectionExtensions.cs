@@ -4,18 +4,17 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Zonit.Extensions.Databases.Abstractions.Options;
 using Zonit.Extensions.Databases.Abstractions.Exceptions;
+using Zonit.Extensions.Databases.SqlServer.Backgrounds;
 
 namespace Zonit.Extensions.Databases.SqlServer.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
-    public static IServiceCollection AddDbContextSqlServer<T>(this IServiceCollection services) where T : DbContext
+    public static IServiceCollection AddDbSqlServer<TContext>(this IServiceCollection services) where TContext : DbContext
     {
-        services.AddDbContextFactory<T>((serviceProvider, options) =>
-        {
-            var databaseOptions = serviceProvider.GetRequiredService<IOptions<DatabaseOptions>>().Value;
-            options.UseSqlServer($"Server={databaseOptions.Server};Database={databaseOptions.Name};user={databaseOptions.User};Password={databaseOptions.Password};{databaseOptions.Parameters}");
-        });
+        services.AddDbOptionsSqlServer();
+        services.AddDbContextSqlServer<TContext>();
+        services.AddDbMigrationSqlServer<TContext>();
 
         return services;
     }
@@ -26,7 +25,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     /// <param name="services"></param>
     /// <returns></returns>
-    public static IServiceCollection AddDatabase(this IServiceCollection services)
+    public static IServiceCollection AddDbOptionsSqlServer(this IServiceCollection services)
     {
         var serviceProvider = services.BuildServiceProvider();
         var configuration = serviceProvider.GetService<IConfiguration>();
@@ -43,9 +42,20 @@ public static class ServiceCollectionExtensions
         return services;
     }
 
-    public static IServiceCollection AddAutomaticMigrations<T>(this IServiceCollection services)
+    public static IServiceCollection AddDbContextSqlServer<TContext>(this IServiceCollection services) where TContext : DbContext
     {
+        services.AddDbContextFactory<TContext>((serviceProvider, options) =>
+        {
+            var databaseOptions = serviceProvider.GetRequiredService<IOptions<DatabaseOptions>>().Value;
+            options.UseSqlServer($"Server={databaseOptions.Server};Database={databaseOptions.Name};user={databaseOptions.User};Password={databaseOptions.Password};{databaseOptions.Parameters}");
+        });
 
-       return services;
+        return services;
+    }
+
+    public static IServiceCollection AddDbMigrationSqlServer<TContext>(this IServiceCollection services) where TContext : DbContext
+    {
+        services.AddHostedService<MigrationEvent<TContext>>();
+        return services;
     }
 }

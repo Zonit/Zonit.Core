@@ -7,7 +7,7 @@ namespace Zonit.Extensions.Databases.Abstractions.Repositories;
 /// </summary>
 /// <typeparam name="T1">Model name</typeparam>
 /// <typeparam name="T2">ID Type</typeparam>
-public interface IBaseRepository<T1, T2>
+public interface IDatabaseRepository<T1, T2>
 {
     Task<T1> AddAsync(T1 entity);
     Task<T1?> GetAsync(T2 id);

@@ -4,7 +4,7 @@ using Zonit.Extensions.Databases.Abstractions.Repositories;
 
 namespace Zonit.Extensions.Databases.SqlServer.Repositories;
 
-public abstract class BasesRepository<T, TContext>(IDbContextFactory<TContext> _context) : IBasesRepository<T> 
+public abstract class DatabasesRepository<T, TContext>(IDbContextFactory<TContext> _context) : IDatabasesRepository<T> 
     where T : class
     where TContext : DbContext
 {
@@ -52,44 +52,44 @@ public abstract class BasesRepository<T, TContext>(IDbContextFactory<TContext> _
         return await entitie.CountAsync().ConfigureAwait(false);
     }
 
-    public IBasesRepository<T> Include(Expression<Func<T, object>> includeExpression)
+    public IDatabasesRepository<T> Include(Expression<Func<T, object>> includeExpression)
     {
         IncludeExpressions ??= [];
         IncludeExpressions.Add(includeExpression);
         return this;
     }
 
-    public IBasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector)
+    public IDatabasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector)
     {
         OrderByColumnSelector = keySelector;
         return this;
     }
 
-    public IBasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector)
+    public IDatabasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector)
     {
         OrderByDescendingColumnSelector = keySelector;
         return this;
     }
 
-    public IBasesRepository<T> Select(Expression<Func<T, T>> selector)
+    public IDatabasesRepository<T> Select(Expression<Func<T, T>> selector)
     {
         SelectColumns = selector;
         return this;
     }
 
-    public IBasesRepository<T> Skip(int skip)
+    public IDatabasesRepository<T> Skip(int skip)
     {
         SkipCount = skip;
         return this;
     }
 
-    public IBasesRepository<T> Take(int take)
+    public IDatabasesRepository<T> Take(int take)
     {
         TakeCount = take;
         return this;
     }
 
-    public IBasesRepository<T> Where(Expression<Func<T, bool>> predicate)
+    public IDatabasesRepository<T> Where(Expression<Func<T, bool>> predicate)
     {
         if (FilterExpression is null)
             FilterExpression = predicate;

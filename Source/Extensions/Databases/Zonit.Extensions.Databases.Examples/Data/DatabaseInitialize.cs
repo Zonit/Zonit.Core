@@ -14,14 +14,7 @@ internal class DatabaseInitialize(IDbContextFactory<DatabaseContext> context) : 
 
     public async Task StartAsync(CancellationToken cancellationToken)
     {
-        var peding = await _context.Database.GetPendingMigrationsAsync(cancellationToken);
-
-        if (peding.Any() is true)
-            await _context.Database.MigrateAsync(cancellationToken);
-
         await this.ExampleDataBlogs();
-
-        await Task.CompletedTask;
     }
 
     async Task ExampleDataBlogs()

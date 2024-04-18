@@ -47,10 +47,9 @@ internal class Program
 
         builder.Configuration.AddConfiguration(CreateConfiguration(args));
 
-        builder.Services.AddDatabase();
+        builder.Services.AddDbSqlServer<DatabaseContext>();
 
-        builder.Services.AddDbContextSqlServer<DatabaseContext>()
-                        .AddHostedService<DatabaseInitialize>();    // TODO: Przenieś to do Databases.SqlServer
+        builder.Services.AddHostedService<DatabaseInitialize>();
 
         builder.Services.AddTransient<IBlogRepository, BlogRepository>();
         builder.Services.AddTransient<IBlogsRepository, BlogsRepository>();

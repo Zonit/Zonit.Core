@@ -21,22 +21,30 @@ public class Blog
 
 **Repository**
 ```cs
-public interface IBlogRepository : IBaseRepository<Blog, Guid>
+public interface IBlogRepository : IDatabaseRepository<Blog, Guid>
 { }
 
-internal class BlogRepository(DatabaseContext _context) : BaseRepository<Blog, Guid>(_context), IBlogRepository
+internal class BlogRepository(DatabaseContext _context) : DatabaseRepository<Blog, Guid>(_context), IBlogRepository
 { }
 
-public interface IBlogsRepository : IBasesRepository<Blog>
+public interface IBlogsRepository : IDatabasesRepository<Blog>
 { }
 
-internal class BlogsRepository(IDbContextFactory<DatabaseContext> _context) : BasesRepository<Blog, DatabaseContext>(_context), IBlogsRepository
+internal class BlogsRepository(IDbContextFactory<DatabaseContext> _context) : DatabasesRepository<Blog, DatabaseContext>(_context), IBlogsRepository
 { }
+```
+
+**Register**
+```cs
+    builder.Services.AddDbSqlServer<DatabaseContext>();
+
+    builder.Services.AddTransient<IBlogRepository, BlogRepository>();
+    builder.Services.AddTransient<IBlogsRepository, BlogsRepository>();
 ```
 
 **Create**
 ```cs
-var create = await _blogRepository.AddAsync(new Blog
+var blog = await _blogRepository.AddAsync(new Blog
 {
     Title = "Hello World",
     Content = "Example content"
@@ -45,19 +53,20 @@ var create = await _blogRepository.AddAsync(new Blog
 
 **Read**
 ```cs
-var read = await _blogRepository.GetFirstAsync(x => x.Title == "Hello World");
+var blogSingle = await _blogRepository.GetAsync(x => x.Title == "Hello World");
+var blogFirst = await _blogRepository.GetFirstAsync(x => x.Title == "Hello World");
 ```
 
 **Update**
 ```cs
-var read = await _blogRepository.GetFirstAsync(x => x.Title == "Hello World");
-read.Title = "New Title";
-var update = await _blogRepository.UpdateAsync(read);
+var blog = await _blogRepository.GetFirstAsync(x => x.Title == "Hello World");
+blog.Title = "New Title";
+var update = await _blogRepository.UpdateAsync(blog);
 ```
 
 **Delete**
 ```cs
-var delete = await _blogRepository.DeleteAsync(createBlog.Id);
+var delete = await _blogRepository.DeleteAsync(blog.Id);
 ```
 
 **Read All**
@@ -71,7 +80,7 @@ foreach (var blog in blogs)
 }
 ```
 
-**API IBaseRepository<T1, T2>**
+**API IDatabaseRepository<T1, T2>**
 ```cs
 Task<T1> AddAsync(T1 entity);
 Task<T1?> GetAsync(T2 id);
@@ -81,15 +90,15 @@ Task<bool> UpdateAsync(T1 entity);
 Task<bool> DeleteAsync(T2 entity);
 ```
 
-**API IBasesRepository<T>**
+**API IDatabasesRepository<T1, T2>**
 ```cs
-IBasesRepository<T> Skip(int skip);
-IBasesRepository<T> Take(int take);
-IBasesRepository<T> Include(Expression<Func<T, object>> includeExpression);
-IBasesRepository<T> Where(Expression<Func<T, bool>> predicate);
-IBasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector);
-IBasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector);
-IBasesRepository<T> Select(Expression<Func<T, T>> selector);
+IDatabasesRepository<T> Skip(int skip);
+IDatabasesRepository<T> Take(int take);
+IDatabasesRepository<T> Include(Expression<Func<T, object>> includeExpression);
+IDatabasesRepository<T> Where(Expression<Func<T, bool>> predicate);
+IDatabasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector);
+IDatabasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector);
+IDatabasesRepository<T> Select(Expression<Func<T, T>> selector);
 Task<IReadOnlyCollection<T>> GetAsync();
 Task<int> GetCountAsync();
 ```

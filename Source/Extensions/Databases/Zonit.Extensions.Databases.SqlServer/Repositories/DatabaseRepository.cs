@@ -8,7 +8,7 @@ namespace Zonit.Extensions.Databases.SqlServer.Repositories;
 
 // TODO: Pomyśl by wywalić ID, zrobić na predicate
 
-public abstract class BaseRepository<T1, T2>(DbContext _context) : IBaseRepository<T1, T2> 
+public abstract class DatabaseRepository<T1, T2>(DbContext _context) : IDatabaseRepository<T1, T2> 
     where T1 : class
 {
     public async Task<T1> AddAsync(T1 entity)
