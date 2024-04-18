@@ -1,8 +1,10 @@
 ## The extension facilitates CRUD creation in databases.
 
+It speeds up the work of creating repositories, with the help of abstractions and interface handle the connection to the database.
+
 **Nuget Package**
 ```
-
+Install-Package Zonit.Extensions.Databases.SqlServer
 ```
 
 ### Example:
