@@ -3,6 +3,7 @@ using Microsoft.Extensions.Options;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Zonit.Extensions.Databases.Abstractions.Options;
+using Zonit.Extensions.Databases.Abstractions.Exceptions;
 
 namespace Zonit.Extensions.Databases.SqlServer.DependencyInjection;
 
@@ -27,6 +28,13 @@ public static class ServiceCollectionExtensions
     /// <returns></returns>
     public static IServiceCollection AddDatabase(this IServiceCollection services)
     {
+        var serviceProvider = services.BuildServiceProvider();
+        var configuration = serviceProvider.GetService<IConfiguration>();
+
+        var databaseSection = configuration?.GetSection("Database");
+        if (databaseSection is null || databaseSection.Exists() is false)
+            throw new DatabaseException("Database configuration section not found.");
+        
         services.AddOptions<DatabaseOptions>()
             .Configure<IConfiguration>(
                 (options, configuration) =>

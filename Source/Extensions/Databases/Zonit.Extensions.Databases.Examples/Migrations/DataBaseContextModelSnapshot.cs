@@ -11,7 +11,7 @@ using Zonit.Extensions.Databases.Examples.Data;
 namespace Zonit.Extensions.Databases.Examples.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    partial class DataBaseContextModelSnapshot : ModelSnapshot
+    partial class DatabaseContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -31,6 +31,9 @@ namespace Zonit.Extensions.Databases.Examples.Migrations
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()

@@ -12,7 +12,7 @@ using Zonit.Extensions.Databases.Examples.Data;
 namespace Zonit.Extensions.Databases.Examples.Migrations
 {
     [DbContext(typeof(DatabaseContext))]
-    [Migration("20240417031119_Examples_v1")]
+    [Migration("20240418013807_Examples_v1")]
     partial class Examples_v1
     {
         /// <inheritdoc />
@@ -34,6 +34,9 @@ namespace Zonit.Extensions.Databases.Examples.Migrations
                     b.Property<string>("Content")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
                         .IsRequired()

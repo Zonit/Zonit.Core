@@ -4,7 +4,7 @@ using Zonit.Extensions.Databases.Examples.Entities;
 namespace Zonit.Extensions.Databases.Examples.Data;
 
 /*
- * dotnet ef migrations add Examples_v1 
+ * Migration command: dotnet ef migrations add Examples_v1 
  */
 internal class DatabaseContext(DbContextOptions<DatabaseContext> options) : DbContext(options)
 {

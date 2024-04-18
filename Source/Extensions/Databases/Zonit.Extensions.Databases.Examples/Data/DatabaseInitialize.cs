@@ -31,7 +31,11 @@ internal class DatabaseInitialize(IDbContextFactory<DatabaseContext> context) : 
 
         var currencies = new List<Blog>
         {
-            new() { Title = "Hello World", Content = "Content..." },
+            new() { 
+                Id = Guid.Parse("f74410c7-6972-4813-8b01-08dc5f359b7e"), 
+                Title = "Hello World", 
+                Content = "Content..." 
+            },
         };
 
         _context.Blogs.AddRange(currencies);
