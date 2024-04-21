@@ -17,6 +17,14 @@ public class Blog
     public string Content { get; set; } = string.Empty;
     public DateTime Created { get; private set; } = DateTime.UtcNow;
 }
+
+internal class BlogDto(Blog x)
+{
+    public string Id { get; set; } = $"Id: {x.Id}";
+    public string Title { get; set; } = $"Title: {x.Title}";
+    public string Content { get; set; } = $"Content: {x.Content}";
+    public string Created { get; set; } = $"Created: {x.Created:G}";
+}
 ```
 
 **Repository**
@@ -51,10 +59,16 @@ var blog = await _blogRepository.AddAsync(new Blog
 });
 ```
 
-**Read**
+**Read single**
 ```cs
 var blogSingle = await _blogRepository.GetAsync(x => x.Title == "Hello World");
+var blogSingleDto = await _blogRepository.GetAsync<BlogDto>(x => x.Title == "Hello World");
+```
+
+**Read first**
+```cs
 var blogFirst = await _blogRepository.GetFirstAsync(x => x.Title == "Hello World");
+var blogFirstDto = await _blogRepository.GetFirstAsync<BlogDto>(x => x.Title == "Hello World");
 ```
 
 **Update**
@@ -73,6 +87,7 @@ var delete = await _blogRepository.DeleteAsync(blog.Id);
 ```cs
 using var repository = _blogsRepository;
 var blogs = await repository.GetAsync();
+var blogsDto = await repository.GetAsync<BlogDto>();
 
 foreach (var blog in blogs)
 {
@@ -80,26 +95,30 @@ foreach (var blog in blogs)
 }
 ```
 
-**API IDatabaseRepository<T1, T2>**
+**API IDatabaseRepository<TEntity, TType>**
 ```cs
-Task<T1> AddAsync(T1 entity);
-Task<T1?> GetAsync(T2 id);
-Task<T1?> GetAsync(Expression<Func<T1, bool>> predicate);
-Task<T1?> GetFirstAsync(Expression<Func<T1, bool>> predicate);
-Task<bool> UpdateAsync(T1 entity);
-Task<bool> DeleteAsync(T2 entity);
+Task<TEntity> AddAsync(TEntity entity);
+Task<TEntity?> GetAsync(TType id);
+Task<TDto?> GetAsync<TDto>(TType id);
+Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate);
+Task<TDto?> GetAsync<TDto>(Expression<Func<TEntity, bool>> predicate);
+Task<TEntity?> GetFirstAsync(Expression<Func<TEntity, bool>> predicate);
+Task<TDto?> GetFirstAsync<TDto>(Expression<Func<TEntity, bool>> predicate);
+Task<bool> UpdateAsync(TEntity entity);
+Task<bool> DeleteAsync(TType entity);
 ```
 
-**API IDatabasesRepository<T1, T2>**
+**API IDatabasesRepository\<TEntity>**
 ```cs
-IDatabasesRepository<T> Skip(int skip);
-IDatabasesRepository<T> Take(int take);
-IDatabasesRepository<T> Include(Expression<Func<T, object>> includeExpression);
-IDatabasesRepository<T> Where(Expression<Func<T, bool>> predicate);
-IDatabasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector);
-IDatabasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector);
-IDatabasesRepository<T> Select(Expression<Func<T, T>> selector);
-Task<IReadOnlyCollection<T>> GetAsync();
+IDatabasesRepository<TEntity> Skip(int skip);
+IDatabasesRepository<TEntity> Take(int take);
+IDatabasesRepository<TEntity> Include(Expression<Func<TEntity, object>> includeExpression);
+IDatabasesRepository<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
+IDatabasesRepository<TEntity> OrderBy(Expression<Func<TEntity, object>> keySelector);
+IDatabasesRepository<TEntity> OrderByDescending(Expression<Func<TEntity, object>> keySelector);
+IDatabasesRepository<TEntity> Select(Expression<Func<TEntity, TEntity>> selector);
+Task<IReadOnlyCollection<TEntity>> GetAsync();
+Task<IReadOnlyCollection<TDto>> GetAsync<TDto>();
 Task<int> GetCountAsync();
 ```
 

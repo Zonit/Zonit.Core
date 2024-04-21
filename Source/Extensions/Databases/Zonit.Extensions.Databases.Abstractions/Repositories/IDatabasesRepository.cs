@@ -5,16 +5,28 @@ namespace Zonit.Extensions.Databases.Abstractions.Repositories;
 /// <summary>
 /// 
 /// </summary>
-/// <typeparam name="T">Model name</typeparam>
-public interface IDatabasesRepository<T> : IDisposable
+/// <typeparam name="TEntity">Model name</typeparam>
+public interface IDatabasesRepository<TEntity> : IDisposable
 {
-    IDatabasesRepository<T> Skip(int skip);
-    IDatabasesRepository<T> Take(int take);
-    IDatabasesRepository<T> Include(Expression<Func<T, object>> includeExpression);
-    IDatabasesRepository<T> Where(Expression<Func<T, bool>> predicate);
-    IDatabasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector);
-    IDatabasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector);
-    IDatabasesRepository<T> Select(Expression<Func<T, T>> selector);
-    Task<IReadOnlyCollection<T>> GetAsync();
+    IDatabasesRepository<TEntity> Skip(int skip);
+    IDatabasesRepository<TEntity> Take(int take);
+    IDatabasesRepository<TEntity> Include(Expression<Func<TEntity, object>> includeExpression);
+    IDatabasesRepository<TEntity> Where(Expression<Func<TEntity, bool>> predicate);
+    IDatabasesRepository<TEntity> OrderBy(Expression<Func<TEntity, object>> keySelector);
+    IDatabasesRepository<TEntity> OrderByDescending(Expression<Func<TEntity, object>> keySelector);
+    IDatabasesRepository<TEntity> Select(Expression<Func<TEntity, TEntity>> selector);
+
+    /// <summary>
+    /// Returns a list of available results 
+    /// </summary>
+    /// <returns></returns>
+    Task<IReadOnlyCollection<TEntity>> GetAsync();
+
+    /// <summary>
+    /// Returns a list of available results by changing them to DTOs
+    /// </summary>
+    /// <typeparam name="TDto"></typeparam>
+    /// <returns></returns>
+    Task<IReadOnlyCollection<TDto>> GetAsync<TDto>();
     Task<int> GetCountAsync();
 }

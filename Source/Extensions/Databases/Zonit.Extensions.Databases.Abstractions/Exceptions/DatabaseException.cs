@@ -1,5 +1,6 @@
 ﻿namespace Zonit.Extensions.Databases.Abstractions.Exceptions;
 
+// TODO: Znaleźć wszystkie exception i je nazwać
 public class DatabaseException(string message) : Exception(message)
 {
     public string? Type { get; }

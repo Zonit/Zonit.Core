@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Zonit.Extensions.Databases.Examples.Dto;
 using Zonit.Extensions.Databases.Examples.Entities;
 using Zonit.Extensions.Databases.Examples.Repositories;
 
@@ -25,12 +26,20 @@ internal class BlogBackground(
         var read = await _blogRepository.GetFirstAsync(x => x.Title == "Hello World");
 
         if (read is not null)
-            _logger.LogInformation("Read: {Id} {Title} {Content} {Created}", createBlog.Id, createBlog.Title, createBlog.Content, createBlog.Created);
+            _logger.LogInformation("Read: {Id} {Title} {Content} {Created}", read.Id, read.Title, read.Content, read.Created);
+        else
+            _logger.LogInformation("Blog not found");
+
+        // Dto Read
+        var dto = await _blogRepository.GetFirstAsync<BlogDto>(x => x.Title == "Hello World");
+
+        if (dto is not null)
+            _logger.LogInformation("Dto Read: {Id} {Title} {Content} {Created}", dto.Id, dto.Title, dto.Content, dto.Created);
         else
             _logger.LogInformation("Blog not found");
 
         // Update
-        if(read is not null)
+        if (read is not null)
         {
             read.Title = "New Title";
             var update = await _blogRepository.UpdateAsync(read);

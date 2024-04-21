@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Zonit.Extensions.Databases.Examples.Dto;
 using Zonit.Extensions.Databases.Examples.Repositories;
 
 namespace Zonit.Extensions.Databases.Examples.Backgrounds;
@@ -12,7 +13,7 @@ internal class BlogsBackground(
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
         using var repository = _blogsRepository;
-        var blogs = await repository.GetAsync();
+        var blogs = await repository.GetAsync<BlogDto>();
 
         if(blogs is null)
         {

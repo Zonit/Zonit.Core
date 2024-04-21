@@ -3,20 +3,21 @@ using System.Linq.Expressions;
 using System.Reflection;
 using Zonit.Extensions.Databases.Abstractions.Exceptions;
 using Zonit.Extensions.Databases.Abstractions.Repositories;
+using Zonit.Extensions.Databases.SqlServer.Services;
 
 namespace Zonit.Extensions.Databases.SqlServer.Repositories;
 
 // TODO: Pomyśl by wywalić ID, zrobić na predicate
 
-public abstract class DatabaseRepository<T1, T2>(DbContext _context) : IDatabaseRepository<T1, T2> 
-    where T1 : class
+public abstract class DatabaseRepository<TEntity, TType>(DbContext _context) : IDatabaseRepository<TEntity, TType> 
+    where TEntity : class
 {
-    public async Task<T1> AddAsync(T1 entity)
+    public async Task<TEntity> AddAsync(TEntity entity)
     {
         if (entity is null)
             throw new DatabaseException($"The {nameof(entity)} parameter cannot be null.");
 
-        await _context.Set<T1>().AddAsync(entity);
+        await _context.Set<TEntity>().AddAsync(entity);
 
         if (await _context.SaveChangesAsync() > 0 is false)
             throw new DatabaseException("There was a problem when creating record.");
@@ -24,51 +25,52 @@ public abstract class DatabaseRepository<T1, T2>(DbContext _context) : IDatabase
         return entity;
     }
 
-    public async Task<T1?> GetAsync(T2 id)
+    public async Task<TEntity?> GetAsync(TType id)
     {
-        var property = typeof(T1).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance);
+        var property = typeof(TEntity).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance);
 
-        if (property is null || property.PropertyType != typeof(T2))
-            throw new DatabaseException($"Entity's Id property not found or type mismatched with {typeof(T2).Name}.");
+        if (property is null || property.PropertyType != typeof(TType))
+            throw new DatabaseException($"Entity's Id property not found or type mismatched with {typeof(TType).Name}.");
 
         var entity = await _context
-            .Set<T1>()
+            .Set<TEntity>()
             .AsNoTracking()
-            .SingleOrDefaultAsync(x => ((T2)property.GetValue(x)!).Equals(id));
+            .SingleOrDefaultAsync(x => ((TType)property.GetValue(x)!).Equals(id));
 
         return entity;
     }
 
-    public async Task<T1?> GetAsync(Expression<Func<T1, bool>> predicate)
-    {
-        var entity = await _context
-            .Set<T1>()
+    public async Task<TDto?> GetAsync<TDto>(TType id)
+        => MappingService.Dto<TDto?>(await this.GetAsync(id));
+
+    public async Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate)
+        => await _context
+            .Set<TEntity>()
             .AsNoTracking()
             .SingleOrDefaultAsync(predicate);
 
-        return entity;
-    }
+    public async Task<TDto?> GetAsync<TDto>(Expression<Func<TEntity, bool>> predicate)
+        => MappingService.Dto<TDto?>(await this.GetAsync(predicate));
 
-    public async Task<T1?> GetFirstAsync(Expression<Func<T1, bool>> predicate)
-    {
-        var entity = await _context
-            .Set<T1>()
+    public async Task<TEntity?> GetFirstAsync(Expression<Func<TEntity, bool>> predicate)
+        => await _context
+            .Set<TEntity>()
             .AsNoTracking()
             .FirstOrDefaultAsync(predicate);
 
-        return entity;
-    }
+    public async Task<TDto?> GetFirstAsync<TDto>(Expression<Func<TEntity, bool>> predicate)
+        => MappingService.Dto<TDto?>(await this.GetFirstAsync(predicate));
 
-    public async Task<bool> UpdateAsync(T1 entity)
+    public async Task<bool> UpdateAsync(TEntity entity)
     {
-        var property = typeof(T1).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance);
+        var property = typeof(TEntity).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance);
 
-        if (property is null || property.PropertyType != typeof(T2))
-            throw new DatabaseException($"Entity's Id property not found or type mismatched with {typeof(T2).Name}.");
+        if (property is null || property.PropertyType != typeof(TType))
+            throw new DatabaseException($"Entity's Id property not found or type mismatched with {typeof(TType).Name}.");
 
-        var id = (T2)property.GetValue(entity)!;
+        var id = (TType)property.GetValue(entity)!;
 
-        var existingEntity = await _context.Set<T1>().FindAsync(id);
+        var existingEntity = await _context.Set<TEntity>().FindAsync(id);
 
         if (existingEntity is null)
             return false;
@@ -82,17 +84,17 @@ public abstract class DatabaseRepository<T1, T2>(DbContext _context) : IDatabase
         return true;
     }
 
-    public async Task<bool> DeleteAsync(T2 id)
+    public async Task<bool> DeleteAsync(TType id)
     {
         var entity = await _context
-            .Set<T1>()
+            .Set<TEntity>()
             .FindAsync(id);
 
         if (entity is null)
             return false;
 
         _context
-            .Set<T1>()
+            .Set<TEntity>()
             .Remove(entity);
 
         if (await _context.SaveChangesAsync() > 0 is false)

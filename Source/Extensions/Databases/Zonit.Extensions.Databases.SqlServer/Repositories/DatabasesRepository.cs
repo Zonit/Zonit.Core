@@ -1,26 +1,28 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System.Linq.Expressions;
+using Zonit.Extensions.Databases.Abstractions.Exceptions;
 using Zonit.Extensions.Databases.Abstractions.Repositories;
+using Zonit.Extensions.Databases.SqlServer.Services;
 
 namespace Zonit.Extensions.Databases.SqlServer.Repositories;
 
-public abstract class DatabasesRepository<T, TContext>(IDbContextFactory<TContext> _context) : IDatabasesRepository<T> 
-    where T : class
+public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<TContext> _context) : IDatabasesRepository<TEntity> 
+    where TEntity : class
     where TContext : DbContext
 {
-    List<Expression<Func<T, object>>>? IncludeExpressions { get; set; }
-    Expression<Func<T, bool>>? FilterExpression { get; set; }
-    Expression<Func<T, object>>? OrderByColumnSelector { get; set; }
-    Expression<Func<T, object>>? OrderByDescendingColumnSelector { get; set; }
-    Expression<Func<T, T>>? SelectColumns { get; set; }
+    List<Expression<Func<TEntity, object>>>? IncludeExpressions { get; set; }
+    Expression<Func<TEntity, bool>>? FilterExpression { get; set; }
+    Expression<Func<TEntity, object>>? OrderByColumnSelector { get; set; }
+    Expression<Func<TEntity, object>>? OrderByDescendingColumnSelector { get; set; }
+    Expression<Func<TEntity, TEntity>>? SelectColumns { get; set; }
     int? SkipCount { get; set; }
     int? TakeCount { get; set; }
 
-    public async Task<IReadOnlyCollection<T>> GetAsync()
+    public async Task<IReadOnlyCollection<TEntity>> GetAsync()
     {
         var context = await _context.CreateDbContextAsync();
 
-        var entitie = context.Set<T>()
+        var entitie = context.Set<TEntity>()
             .AsSplitQuery()
             .AsNoTracking();
 
@@ -39,11 +41,14 @@ public abstract class DatabasesRepository<T, TContext>(IDbContextFactory<TContex
         return await entitie.ToListAsync().ConfigureAwait(false);
     }
 
+    public async Task<IReadOnlyCollection<TDto>> GetAsync<TDto>()
+        => MappingService.Dto<TDto>(await this.GetAsync());
+    
     public async Task<int> GetCountAsync()
     {
         var context = await _context.CreateDbContextAsync();
 
-        var entitie = context.Set<T>()
+        var entitie = context.Set<TEntity>()
             .AsNoTracking();
 
         if (FilterExpression is not null)
@@ -52,51 +57,51 @@ public abstract class DatabasesRepository<T, TContext>(IDbContextFactory<TContex
         return await entitie.CountAsync().ConfigureAwait(false);
     }
 
-    public IDatabasesRepository<T> Include(Expression<Func<T, object>> includeExpression)
+    public IDatabasesRepository<TEntity> Include(Expression<Func<TEntity, object>> includeExpression)
     {
         IncludeExpressions ??= [];
         IncludeExpressions.Add(includeExpression);
         return this;
     }
 
-    public IDatabasesRepository<T> OrderBy(Expression<Func<T, object>> keySelector)
+    public IDatabasesRepository<TEntity> OrderBy(Expression<Func<TEntity, object>> keySelector)
     {
         OrderByColumnSelector = keySelector;
         return this;
     }
 
-    public IDatabasesRepository<T> OrderByDescending(Expression<Func<T, object>> keySelector)
+    public IDatabasesRepository<TEntity> OrderByDescending(Expression<Func<TEntity, object>> keySelector)
     {
         OrderByDescendingColumnSelector = keySelector;
         return this;
     }
 
-    public IDatabasesRepository<T> Select(Expression<Func<T, T>> selector)
+    public IDatabasesRepository<TEntity> Select(Expression<Func<TEntity, TEntity>> selector)
     {
         SelectColumns = selector;
         return this;
     }
 
-    public IDatabasesRepository<T> Skip(int skip)
+    public IDatabasesRepository<TEntity> Skip(int skip)
     {
         SkipCount = skip;
         return this;
     }
 
-    public IDatabasesRepository<T> Take(int take)
+    public IDatabasesRepository<TEntity> Take(int take)
     {
         TakeCount = take;
         return this;
     }
 
-    public IDatabasesRepository<T> Where(Expression<Func<T, bool>> predicate)
+    public IDatabasesRepository<TEntity> Where(Expression<Func<TEntity, bool>> predicate)
     {
         if (FilterExpression is null)
             FilterExpression = predicate;
         else
         {
             var invokedExpr = Expression.Invoke(predicate, FilterExpression.Parameters.Cast<Expression>());
-            FilterExpression = Expression.Lambda<Func<T, bool>>(Expression.AndAlso(FilterExpression.Body, invokedExpr), FilterExpression.Parameters);
+            FilterExpression = Expression.Lambda<Func<TEntity, bool>>(Expression.AndAlso(FilterExpression.Body, invokedExpr), FilterExpression.Parameters);
         }
         return this;
     }
