@@ -4,8 +4,8 @@ namespace Zonit.Extensions.Databases.SqlServer.Services;
 
 internal static class MappingService
 {
-    public static IReadOnlyCollection<TDto> Dto<TDto>(IEnumerable<object> entities)
-        => entities.Select(x => Dto<TDto>(x)).ToList();
+    public static IReadOnlyCollection<TDto>? Dto<TDto>(IEnumerable<object>? entities)
+        => entities?.Select(x => Dto<TDto>(x)).ToList();
 
     public static TDto Dto<TDto>(object? entity)
     {

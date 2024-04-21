@@ -20,13 +20,13 @@ public interface IDatabasesRepository<TEntity> : IDisposable
     /// Returns a list of available results 
     /// </summary>
     /// <returns></returns>
-    Task<IReadOnlyCollection<TEntity>> GetAsync();
+    Task<IReadOnlyCollection<TEntity>?> GetAsync();
 
     /// <summary>
     /// Returns a list of available results by changing them to DTOs
     /// </summary>
     /// <typeparam name="TDto"></typeparam>
     /// <returns></returns>
-    Task<IReadOnlyCollection<TDto>> GetAsync<TDto>();
+    Task<IReadOnlyCollection<TDto>?> GetAsync<TDto>();
     Task<int> GetCountAsync();
 }

@@ -12,18 +12,20 @@ internal class BlogsBackground(
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
+
         using var repository = _blogsRepository;
         var blogs = await repository.GetAsync<BlogDto>();
 
-        if(blogs is null)
+        if(blogs is not null)
+        {
+            foreach (var blog in blogs)
+            {
+                _logger.LogInformation("Blog: {Id} {Title} {Content} {Created}", blog.Id, blog.Title, blog.Content, blog.Created);
+            }
+        }
+        else
         {
             _logger.LogInformation("Blogs not found");
-            return;
-        }
-
-        foreach (var blog in blogs)
-        {
-            _logger.LogInformation("Blog: {Id} {Title} {Content} {Created}", blog.Id, blog.Title, blog.Content, blog.Created);
         }
     }
 }

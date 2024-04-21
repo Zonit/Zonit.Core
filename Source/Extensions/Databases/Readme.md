@@ -2,7 +2,12 @@
 
 It speeds up the work of creating repositories, with the help of abstractions and interface handle the connection to the database.
 
-**Nuget Package**
+**Nuget Package Abstraction**
+```
+Install-Package Zonit.Extensions.Databases.Abstractions 
+```
+
+**Nuget Package Extensions SqlServer**
 ```
 Install-Package Zonit.Extensions.Databases.SqlServer
 ```
@@ -88,11 +93,6 @@ var delete = await _blogRepository.DeleteAsync(blog.Id);
 using var repository = _blogsRepository;
 var blogs = await repository.GetAsync();
 var blogsDto = await repository.GetAsync<BlogDto>();
-
-foreach (var blog in blogs)
-{
-...
-}
 ```
 
 **API IDatabaseRepository<TEntity, TType>**
