@@ -18,7 +18,7 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
     int? SkipCount { get; set; }
     int? TakeCount { get; set; }
 
-    public async Task<IReadOnlyCollection<TEntity>?> GetAsync()
+    public async Task<IReadOnlyCollection<TEntity>?> GetAsync(CancellationToken cancellationToken = default)
     {
         var context = await _context.CreateDbContextAsync();
 
@@ -38,7 +38,7 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
         entitie = SkipCount is not null ? entitie.Skip(SkipCount.Value) : entitie;
         entitie = TakeCount is not null ? entitie.Take(TakeCount.Value) : entitie;
 
-        var result = await entitie.ToListAsync().ConfigureAwait(false);
+        var result = await entitie.ToListAsync(cancellationToken).ConfigureAwait(false);
 
         if (result is null || result.Count == 0)
             return null;
@@ -46,8 +46,8 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
         return result;
     }
 
-    public async Task<IReadOnlyCollection<TDto>?> GetAsync<TDto>()
-        => MappingService.Dto<TDto>(await this.GetAsync());
+    public async Task<IReadOnlyCollection<TDto>?> GetAsync<TDto>(CancellationToken cancellationToken = default)
+        => MappingService.Dto<TDto>(await this.GetAsync(cancellationToken));
     
     public async Task<int> GetCountAsync()
     {

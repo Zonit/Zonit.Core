@@ -9,13 +9,13 @@ namespace Zonit.Extensions.Databases.Abstractions.Repositories;
 /// <typeparam name="TType">ID Type</typeparam>
 public interface IDatabaseRepository<TEntity, TType>
 {
-    Task<TEntity> AddAsync(TEntity entity);
-    Task<TEntity?> GetAsync(TType id);
-    Task<TDto?> GetAsync<TDto>(TType id);
-    Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate);
-    Task<TDto?> GetAsync<TDto>(Expression<Func<TEntity, bool>> predicate);
-    Task<TEntity?> GetFirstAsync(Expression<Func<TEntity, bool>> predicate);
-    Task<TDto?> GetFirstAsync<TDto>(Expression<Func<TEntity, bool>> predicate);
-    Task<bool> UpdateAsync(TEntity entity);
-    Task<bool> DeleteAsync(TType entity);
+    Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task<TEntity?> GetAsync(TType id, CancellationToken cancellationToken = default);
+    Task<TDto?> GetAsync<TDto>(TType id, CancellationToken cancellationToken = default);
+    Task<TEntity?> GetAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+    Task<TDto?> GetAsync<TDto>(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+    Task<TEntity?> GetFirstAsync(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+    Task<TDto?> GetFirstAsync<TDto>(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
+    Task<bool> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
+    Task<bool> DeleteAsync(TType entity, CancellationToken cancellationToken = default);
 }
