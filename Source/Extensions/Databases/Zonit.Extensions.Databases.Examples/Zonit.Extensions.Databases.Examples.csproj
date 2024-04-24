@@ -17,6 +17,7 @@
 	</PackageReference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Logs\Zonit.Extensions.Logs\Zonit.Extensions.Logs.csproj" />
     <ProjectReference Include="..\Zonit.Extensions.Databases.SqlServer\Zonit.Extensions.Databases.SqlServer.csproj" />
   </ItemGroup>
 </Project>

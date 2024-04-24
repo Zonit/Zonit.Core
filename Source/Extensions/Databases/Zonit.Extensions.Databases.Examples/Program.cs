@@ -1,7 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
+using Zonit;
 using Zonit.Extensions.Databases.Examples.Data;
-using Zonit.Extensions.Databases.SqlServer.DependencyInjection;
 using Zonit.Extensions.Databases.Examples.Repositories;
 using Microsoft.Extensions.Configuration;
 using Zonit.Extensions.Databases.Examples.Backgrounds;
@@ -46,6 +46,8 @@ internal class Program
         });
 
         builder.Configuration.AddConfiguration(CreateConfiguration(args));
+
+        builder.Services.AddLogs();
 
         builder.Services.AddDbSqlServer<DatabaseContext>();
 

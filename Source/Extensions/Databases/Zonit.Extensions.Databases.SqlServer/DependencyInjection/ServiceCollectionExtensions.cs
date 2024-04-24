@@ -5,13 +5,21 @@ using Microsoft.Extensions.DependencyInjection;
 using Zonit.Extensions.Databases.Abstractions.Options;
 using Zonit.Extensions.Databases.Abstractions.Exceptions;
 using Zonit.Extensions.Databases.SqlServer.Backgrounds;
+using Microsoft.Extensions.Logging;
 
-namespace Zonit.Extensions.Databases.SqlServer.DependencyInjection;
+namespace Zonit.Extensions;
 
 public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddDbSqlServer<TContext>(this IServiceCollection services) where TContext : DbContext
     {
+#if !DEBUG
+        services.AddLogging(builder =>
+        {
+            builder.AddFilter("Microsoft.EntityFrameworkCore.Database.Command", LogLevel.Warning);
+        });
+#endif
+
         services.AddDbOptionsSqlServer();
         services.AddDbContextSqlServer<TContext>();
         services.AddDbMigrationSqlServer<TContext>();
