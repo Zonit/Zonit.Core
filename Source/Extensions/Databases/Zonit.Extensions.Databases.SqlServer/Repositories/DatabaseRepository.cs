@@ -108,6 +108,24 @@ public abstract class DatabaseRepository<TEntity, TType>(DbContext _context) : I
 
         return true;
     }
+
+    public async Task<bool> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default)
+    {
+        if (entity is null)
+            return false;
+
+        if (_context.Entry(entity).State == EntityState.Detached)
+            _context.Set<TEntity>().Attach(entity);
+
+        _context
+            .Set<TEntity>()
+            .Remove(entity);
+
+        if (await _context.SaveChangesAsync(cancellationToken) > 0 is false)
+            throw new DatabaseException("There was a problem when deleting record.");
+
+        return true;
+    }
 }
 
 //public async Task<T2> AddAsync(T1 entity)

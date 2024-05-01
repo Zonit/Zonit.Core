@@ -22,5 +22,7 @@ public interface IDatabaseRepository<TEntity, TType>
     Task<TDto?> GetFirstAsync<TDto>(Expression<Func<TEntity, bool>> predicate, CancellationToken cancellationToken = default);
 
     Task<bool> UpdateAsync(TEntity entity, CancellationToken cancellationToken = default);
+
     Task<bool> DeleteAsync(TType entity, CancellationToken cancellationToken = default);
+    Task<bool> DeleteAsync(TEntity entity, CancellationToken cancellationToken = default);
 }

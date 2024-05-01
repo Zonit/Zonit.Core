@@ -12,32 +12,28 @@ internal class BlogsBackground(
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-        using var repository = _blogsRepository;
-
         // Update range
-        var count = await _blogsRepository.Where(x => x.Created > DateTime.Now.AddYears(-1)).UpdateRangeAsync(x => { 
-            x.Title = "New all title";
-            x.Content = "New all content";
-        });
-
-        if(count is not null)
+        using (var repository = _blogsRepository)
         {
-            _logger.LogInformation("Updated {Count} blogs", count);
+            var count = await _blogsRepository.Where(x => x.Created > DateTime.Now.AddYears(-1)).UpdateRangeAsync(x => {
+                x.Title = "New all title";
+                x.Content = "New all content";
+            }, stoppingToken);
+
+            if (count is not null)
+                _logger.LogInformation("Updated {Count} blogs", count);
         }
 
         // Read
-        var blogs = await repository.GetAsync<BlogDto>();
+        using (var repository = _blogsRepository)
+        {
+            var blogs = await repository.GetAsync<BlogDto>(stoppingToken);
 
-        if(blogs is not null)
-        {
-            foreach (var blog in blogs)
-            {
-                _logger.LogInformation("Blog: {Id} {Title} {Content} {Created}", blog.Id, blog.Title, blog.Content, blog.Created);
-            }
-        }
-        else
-        {
-            _logger.LogInformation("Blogs not found");
+            if(blogs is not null)
+                foreach (var blog in blogs)
+                    _logger.LogInformation("Blog: {Id} {Title} {Content} {Created}", blog.Id, blog.Title, blog.Content, blog.Created);
+            else
+                _logger.LogInformation("Blogs not found");
         }
     }
 }

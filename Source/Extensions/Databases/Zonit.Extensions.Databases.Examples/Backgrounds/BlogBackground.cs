@@ -51,7 +51,7 @@ internal class BlogBackground(
         }
 
         // Delete
-        var delete = await _blogRepository.DeleteAsync(createBlog.Id);
+        var delete = await _blogRepository.DeleteAsync(createBlog);
 
         if(delete is true)
             _logger.LogInformation("Blog deleted");
