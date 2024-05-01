@@ -19,6 +19,7 @@ public interface IDatabasesRepository<TEntity> : IDisposable
     /// <summary>
     /// Returns a list of available results 
     /// </summary>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<IReadOnlyCollection<TEntity>?> GetAsync(CancellationToken cancellationToken = default);
 
@@ -26,7 +27,17 @@ public interface IDatabasesRepository<TEntity> : IDisposable
     /// Returns a list of available results by changing them to DTOs
     /// </summary>
     /// <typeparam name="TDto"></typeparam>
+    /// <param name="cancellationToken"></param>
     /// <returns></returns>
     Task<IReadOnlyCollection<TDto>?> GetAsync<TDto>(CancellationToken cancellationToken = default);
+
+    /// <summary>
+    /// Update multiple data
+    /// </summary>
+    /// <param name="predicate">Data to be changed</param>
+    /// <param name="cancellationToken"></param>
+    /// <returns></returns>
+    Task<int?> UpdateRangeAsync(Action<TEntity> updateAction, CancellationToken cancellationToken = default);
+
     Task<int> GetCountAsync();
 }

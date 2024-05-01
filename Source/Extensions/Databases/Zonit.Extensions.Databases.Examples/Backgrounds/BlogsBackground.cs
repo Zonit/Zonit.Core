@@ -12,8 +12,20 @@ internal class BlogsBackground(
 {
     protected override async Task ExecuteAsync(CancellationToken stoppingToken)
     {
-
         using var repository = _blogsRepository;
+
+        // Update range
+        var count = await _blogsRepository.Where(x => x.Created > DateTime.Now.AddYears(-1)).UpdateRangeAsync(x => { 
+            x.Title = "New all title";
+            x.Content = "New all content";
+        });
+
+        if(count is not null)
+        {
+            _logger.LogInformation("Updated {Count} blogs", count);
+        }
+
+        // Read
         var blogs = await repository.GetAsync<BlogDto>();
 
         if(blogs is not null)

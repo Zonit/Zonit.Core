@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
 using Zonit.Extensions.Databases.Abstractions.Exceptions;
 using Zonit.Extensions.Databases.Abstractions.Repositories;
@@ -20,7 +21,7 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
 
     public async Task<IReadOnlyCollection<TEntity>?> GetAsync(CancellationToken cancellationToken = default)
     {
-        var context = await _context.CreateDbContextAsync();
+        var context = await _context.CreateDbContextAsync(cancellationToken);
 
         var entitie = context.Set<TEntity>()
             .AsSplitQuery()
@@ -44,6 +45,31 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
             return null;
 
         return result;
+    }
+
+    public async Task<int?> UpdateRangeAsync(Action<TEntity> updateAction, CancellationToken cancellationToken = default)
+    {
+        var context = await _context.CreateDbContextAsync(cancellationToken);
+
+        var entitie = context.Set<TEntity>()
+            .AsSplitQuery()
+            .AsNoTracking();
+
+        entitie = FilterExpression is not null ? entitie.Where(FilterExpression) : entitie;
+
+        var result = await entitie.ToListAsync(cancellationToken).ConfigureAwait(false);
+
+        foreach (var entity in result)
+        {
+            updateAction(entity);
+            context.Entry(entity).State = EntityState.Modified;
+        }
+
+        context.UpdateRange(result);
+
+        var count = await context.SaveChangesAsync(cancellationToken).ConfigureAwait(false);
+
+        return count > 0 ? count : null;
     }
 
     public async Task<IReadOnlyCollection<TDto>?> GetAsync<TDto>(CancellationToken cancellationToken = default)
