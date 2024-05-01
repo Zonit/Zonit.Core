@@ -5,7 +5,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Zonit.Extensions.Databases.Abstractions.Options;
 using Zonit.Extensions.Databases.Abstractions.Exceptions;
 using Zonit.Extensions.Databases.SqlServer.Backgrounds;
-using Microsoft.Extensions.Logging;
 
 namespace Zonit.Extensions;
 

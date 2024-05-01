@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Zonit;
 using Zonit.Extensions.Databases.Examples.Data;
 using Zonit.Extensions.Databases.Examples.Repositories;
 using Microsoft.Extensions.Configuration;

@@ -25,6 +25,9 @@ public abstract class DatabaseRepository<TEntity, TType>(DbContext _context) : I
         return entity;
     }
 
+    public async Task<TDto> AddAsync<TDto>(TEntity entity, CancellationToken cancellationToken = default)
+        => MappingService.Dto<TDto>(await this.AddAsync(entity, cancellationToken));
+
     public async Task<TEntity?> GetAsync(TType id, CancellationToken cancellationToken = default)
     {
         var property = typeof(TEntity).GetProperty("Id", BindingFlags.Public | BindingFlags.Instance);
