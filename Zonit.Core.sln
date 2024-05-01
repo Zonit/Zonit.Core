@@ -40,7 +40,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Logs", "Logs", "{42546B7B-D
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Logs", "Source\Extensions\Logs\Zonit.Extensions.Logs\Zonit.Extensions.Logs.csproj", "{BEDB75EC-C80C-4CE1-AF3D-E1CF1AB03036}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Logs.Abstractions", "Source\Extensions\Logs\Zonit.Extensions.Logs.Abstractions\Zonit.Extensions.Logs.Abstractions.csproj", "{9ACB5B90-ECF6-4076-9B32-9DC18ED36B20}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Logs.Abstractions", "Source\Extensions\Logs\Zonit.Extensions.Logs.Abstractions\Zonit.Extensions.Logs.Abstractions.csproj", "{9ACB5B90-ECF6-4076-9B32-9DC18ED36B20}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Identity", "Identity", "{ECB7B13B-4067-42AA-AD60-AF9636CE5C65}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Identity.Abstractions", "Source\Extensions\Identity\Zonit.Extensions.Identity.Abstractions\Zonit.Extensions.Identity.Abstractions.csproj", "{F6BE0F28-6AFC-439A-AAB2-7967A1739AFE}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Organizations", "Organizations", "{167CE2C7-4324-466E-B60C-80F520793080}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Organizations.Abstractions", "Source\Extensions\Organizations\Zonit.Extensions.Organizations.Abstractions\Zonit.Extensions.Organizations.Abstractions.csproj", "{1131B174-5205-4A0B-89DB-A6348094AB30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -84,6 +92,14 @@ Global
 		{9ACB5B90-ECF6-4076-9B32-9DC18ED36B20}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9ACB5B90-ECF6-4076-9B32-9DC18ED36B20}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9ACB5B90-ECF6-4076-9B32-9DC18ED36B20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F6BE0F28-6AFC-439A-AAB2-7967A1739AFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F6BE0F28-6AFC-439A-AAB2-7967A1739AFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F6BE0F28-6AFC-439A-AAB2-7967A1739AFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F6BE0F28-6AFC-439A-AAB2-7967A1739AFE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1131B174-5205-4A0B-89DB-A6348094AB30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1131B174-5205-4A0B-89DB-A6348094AB30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1131B174-5205-4A0B-89DB-A6348094AB30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1131B174-5205-4A0B-89DB-A6348094AB30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -101,6 +117,10 @@ Global
 		{42546B7B-DC85-4E63-B1FE-2194D843BC00} = {3B46835C-A1E6-4C0F-954B-F027AA91998B}
 		{BEDB75EC-C80C-4CE1-AF3D-E1CF1AB03036} = {42546B7B-DC85-4E63-B1FE-2194D843BC00}
 		{9ACB5B90-ECF6-4076-9B32-9DC18ED36B20} = {42546B7B-DC85-4E63-B1FE-2194D843BC00}
+		{ECB7B13B-4067-42AA-AD60-AF9636CE5C65} = {3B46835C-A1E6-4C0F-954B-F027AA91998B}
+		{F6BE0F28-6AFC-439A-AAB2-7967A1739AFE} = {ECB7B13B-4067-42AA-AD60-AF9636CE5C65}
+		{167CE2C7-4324-466E-B60C-80F520793080} = {3B46835C-A1E6-4C0F-954B-F027AA91998B}
+		{1131B174-5205-4A0B-89DB-A6348094AB30} = {167CE2C7-4324-466E-B60C-80F520793080}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A245F2EE-E154-4E0A-9727-946ED77DA4CB}
