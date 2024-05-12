@@ -15,21 +15,9 @@ Install-Package Zonit.Extensions.Website
 ### Installation:
 Add this in ``Routes.razor``
 ```razor
-@using Zonit.Extensions.Website.Abstractions.Cookies
-@using Zonit.Extensions.Website.Abstractions.Cookies.Models
+@using Zonit.Extensions
 
-@code {
-    [Inject]
-    ICookie Cookie { get; set; } = null!;
-
-    [CascadingParameter]
-    protected List<CookieModel> Cookies { get; set; } = new();
-
-    protected override void OnInitialized()
-    {
-        Cookie.Inicjalize(Cookies);
-    }
-}
+<ZonitCookiesExtension />
 ```
 
 **Register:**
@@ -47,18 +35,13 @@ App in ``Program.cs``
 
 ```razor
 @page "/"
-
 @rendermode InteractiveServer
-
 @using Zonit.Extensions.Website.Abstractions.Cookies
 @inject ICookie Cookie
 
-@if(Cookie.GetCookies() is not null)
+@foreach (var cookie in Cookie.GetCookies())
 {
-    @foreach (var cookie in Cookie.GetCookies())
-    {
-        <p>@cookie.Name @cookie.Value</p>
-    }
+    <p>@cookie.Name @cookie.Value</p>
 }
 ```
 
@@ -67,9 +50,10 @@ App in ``Program.cs``
 ```cs
     public CookieModel? Get(string key);
     public CookieModel Set(string key, string value, int days = 12 * 30);
+    public CookieModel Set(CookieModel model);
     public Task<CookieModel> SetAsync(string key, string value, int days = 12 * 30);
+    public Task<CookieModel> SetAsync(CookieModel model);
     public List<CookieModel> GetCookies();
-    public void Inicjalize(List<CookieModel> cookies);
 ```
 
 We use SetAsync only in the Blazor circuit. It executes the JS code with the Cookies record.
