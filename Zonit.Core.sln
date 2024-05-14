@@ -75,6 +75,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Cultures",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Website", "Source\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj", "{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Identity", "Source\Extensions\Identity\Zonit.Extensions.Identity\Zonit.Extensions.Identity.csproj", "{52303E7D-A0D1-4811-AA07-C8FBCD365A08}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -153,6 +155,10 @@ Global
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -185,6 +191,7 @@ Global
 		{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A} = {BFB015E5-BD1A-4B14-8383-FBD78D6CCFCB}
 		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76} = {BB25C094-EF08-45B0-860E-11A62C1E6C9E}
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4} = {8A8B0D31-375E-4C2F-8D94-A1A193F58A13}
+		{52303E7D-A0D1-4811-AA07-C8FBCD365A08} = {ECB7B13B-4067-42AA-AD60-AF9636CE5C65}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A245F2EE-E154-4E0A-9727-946ED77DA4CB}

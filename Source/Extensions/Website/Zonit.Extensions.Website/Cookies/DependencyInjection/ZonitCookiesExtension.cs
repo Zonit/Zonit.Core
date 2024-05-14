@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
+using System.Data.Common;
 using Zonit.Extensions.Website.Abstractions.Cookies.Models;
 using Zonit.Extensions.Website.Cookies.Repositories;
 
@@ -35,6 +36,15 @@ public class ZonitCookiesExtension : ComponentBase, IDisposable
         return Task.CompletedTask;
     }
 
-    void IDisposable.Dispose()
-        => persistingSubscription.Dispose();
+    public void Dispose()
+    {
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+            persistingSubscription.Dispose();
+    }
 }
