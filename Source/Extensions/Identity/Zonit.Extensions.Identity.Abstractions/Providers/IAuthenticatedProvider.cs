@@ -1,8 +1,8 @@
-﻿using Zonit.Extensions.Identity.Abstractions.Entities;
+﻿using Zonit.Extensions.Identity.Abstractions.Models;
 
 namespace Zonit.Extensions.Identity;
 
 public interface IAuthenticatedProvider
 {
-    public User? User { get; }
+    public UserModel? User { get; }
 }

@@ -1,13 +1,13 @@
-﻿using Zonit.Extensions.Identity.Abstractions.Entities;
+﻿using Zonit.Extensions.Identity.Abstractions.Models;
 
 namespace Zonit.Extensions.Identity.Repositories;
 
 internal class AuthenticatedRepository : IAuthenticatedRepository
 {
-    User? _user;
+    UserModel? _user;
 
-    public User? User => _user;
+    public UserModel? User => _user;
 
-    public void Inicjalize(User users)
+    public void Inicjalize(UserModel users)
         => _user = users;
 }

@@ -1,9 +1,9 @@
-﻿using Zonit.Extensions.Identity.Abstractions.Entities;
+﻿using Zonit.Extensions.Identity.Abstractions.Models;
 
 namespace Zonit.Extensions.Identity;
 
 public interface IUserProvider
 {
-    public Task<User?> GetByIdAsync(Guid id);
-    public Task<User?> GetByUserNameAsync(string userName);
+    public Task<UserModel?> GetByIdAsync(Guid id);
+    public Task<UserModel?> GetByUserNameAsync(string userName);
 }

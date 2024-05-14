@@ -4,6 +4,7 @@ using Zonit.Extensions;
 using Zonit.Extensions.Identity.Abstractions.Entities;
 using Zonit.Extensions.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Zonit.Extensions.Identity.Abstractions.Models;
 
 namespace Zonit.Services;
 
@@ -55,17 +56,18 @@ public static class ServiceCollectionExtensions
 
 public class UserTest : IUserProvider
 {
-    public async Task<User?> GetByIdAsync(Guid id)
+    public async Task<UserModel?> GetByIdAsync(Guid id)
     {
-        return new User { 
+        return new UserModel
+        { 
             Name = "NoUser",
             DisplayRole = "Admin"
         };
     }
 
-    public async Task<User?> GetByUserNameAsync(string userName)
+    public async Task<UserModel?> GetByUserNameAsync(string userName)
     {
-        return new User
+        return new UserModel
         {
             Name = "NoUser",
             DisplayRole = "Admin"
@@ -75,9 +77,9 @@ public class UserTest : IUserProvider
 
 public class SessionTest : ISessionProvider
 {
-    public async Task<User?> GetByTokenAsync(string token)
+    public async Task<UserModel?> GetByTokenAsync(string token)
     {
-        return new User
+        return new UserModel
         {
             Name = "NoUser",
             DisplayRole = "Admin"

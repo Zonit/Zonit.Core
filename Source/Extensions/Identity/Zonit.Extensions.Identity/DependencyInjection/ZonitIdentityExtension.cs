@@ -1,5 +1,5 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Zonit.Extensions.Identity.Abstractions.Entities;
+using Zonit.Extensions.Identity.Abstractions.Models;
 using Zonit.Extensions.Identity.Repositories;
 
 namespace Zonit.Extensions;
@@ -12,14 +12,14 @@ public sealed class ZonitIdentityExtension : ComponentBase, IDisposable
     [Inject]
     PersistentComponentState ApplicationState { get; set; } = default!;
 
-    User? User { get; set; } = null!;
+    UserModel? User { get; set; } = null!;
     PersistingComponentStateSubscription persistingSubscription;
 
     protected override void OnInitialized()
     {
         persistingSubscription = ApplicationState.RegisterOnPersisting(PersistData);
 
-        if (!ApplicationState.TryTakeFromJson<User>("ZonitIdentityExtension", out var restored))
+        if (!ApplicationState.TryTakeFromJson<UserModel>("ZonitIdentityExtension", out var restored))
             User = _authenticatedRepository.User;
         else
             User = restored!;

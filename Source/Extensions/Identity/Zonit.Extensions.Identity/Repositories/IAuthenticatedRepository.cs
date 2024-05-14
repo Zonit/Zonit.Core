@@ -1,9 +1,9 @@
-﻿using Zonit.Extensions.Identity.Abstractions.Entities;
+﻿using Zonit.Extensions.Identity.Abstractions.Models;
 
 namespace Zonit.Extensions.Identity.Repositories;
 
 public interface IAuthenticatedRepository
 {
-    public void Inicjalize(User users);
-    public User? User { get; }
+    public void Inicjalize(UserModel users);
+    public UserModel? User { get; }
 }
