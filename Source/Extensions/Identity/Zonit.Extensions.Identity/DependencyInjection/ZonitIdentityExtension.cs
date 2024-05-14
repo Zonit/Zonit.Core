@@ -4,13 +4,13 @@ using Zonit.Extensions.Identity.Repositories;
 
 namespace Zonit.Extensions;
 
-public class ZonitIdentityExtension : ComponentBase, IDisposable
+public sealed class ZonitIdentityExtension : ComponentBase, IDisposable
 {
     [Inject]
-    protected IAuthenticatedRepository authenticatedRepository { get; set; } = null!;
+    IAuthenticatedRepository _authenticatedRepository { get; set; } = default!;
 
     [Inject]
-    PersistentComponentState ApplicationState { get; set; } = null!;
+    PersistentComponentState ApplicationState { get; set; } = default!;
 
     User? User { get; set; } = null!;
     PersistingComponentStateSubscription persistingSubscription;
@@ -20,16 +20,12 @@ public class ZonitIdentityExtension : ComponentBase, IDisposable
         persistingSubscription = ApplicationState.RegisterOnPersisting(PersistData);
 
         if (!ApplicationState.TryTakeFromJson<User>("ZonitIdentityExtension", out var restored))
-        {
-            User = authenticatedRepository.User;
-        }
+            User = _authenticatedRepository.User;
         else
-        {
             User = restored!;
-        }
 
         if(User is not null)
-            authenticatedRepository.Inicjalize(User);
+            _authenticatedRepository.Inicjalize(User);
     }
 
     private Task PersistData()
@@ -39,6 +35,6 @@ public class ZonitIdentityExtension : ComponentBase, IDisposable
         return Task.CompletedTask;
     }
 
-    void IDisposable.Dispose()
+    public void Dispose()
         => persistingSubscription.Dispose();
 }

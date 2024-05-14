@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Razor">
+	<ItemGroup>
+		<FrameworkReference Include="Microsoft.AspNetCore.App" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
+		<PackageReference Include="MudBlazor" />
+	</ItemGroup>
+	
+	<ItemGroup>
+		<ProjectReference Include="..\..\..\Extensions\Cultures\Zonit.Extensions.Cultures\Zonit.Extensions.Cultures.csproj" />
+		<ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj" />
+	</ItemGroup>
+</Project>

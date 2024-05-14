@@ -1,0 +1,6 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+  <ItemGroup>
+    <ProjectReference Include="..\Zonit.Services.Manager.Examples.Presentation\Zonit.Services.Manager.Examples.Presentation.csproj" />
+    <ProjectReference Include="..\Zonit.Services.Manager\Zonit.Services.Manager.csproj" />
+  </ItemGroup>
+</Project>

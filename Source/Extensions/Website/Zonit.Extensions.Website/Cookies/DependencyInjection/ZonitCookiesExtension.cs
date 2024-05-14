@@ -1,17 +1,16 @@
 ﻿using Microsoft.AspNetCore.Components;
-using System.Data.Common;
 using Zonit.Extensions.Website.Abstractions.Cookies.Models;
 using Zonit.Extensions.Website.Cookies.Repositories;
 
 namespace Zonit.Extensions;
 
-public class ZonitCookiesExtension : ComponentBase, IDisposable
+public sealed class ZonitCookiesExtension : ComponentBase, IDisposable
 {
     [Inject]
-    protected ICookiesRepository Cookie { get; set; } = null!;
+    ICookiesRepository Cookie { get; set; } = default!;
 
     [Inject]
-    PersistentComponentState ApplicationState { get; set; } = null!;
+    PersistentComponentState ApplicationState { get; set; } = default!;
 
     List<CookieModel> Cookies { get; set; } = null!;
 
@@ -37,14 +36,5 @@ public class ZonitCookiesExtension : ComponentBase, IDisposable
     }
 
     public void Dispose()
-    {
-        Dispose(true);
-        GC.SuppressFinalize(this);
-    }
-
-    protected virtual void Dispose(bool disposing)
-    {
-        if (disposing)
-            persistingSubscription.Dispose();
-    }
+        => persistingSubscription.Dispose();
 }

@@ -3,13 +3,13 @@ using Zonit.Extensions.Cultures.Repositories;
 
 namespace Zonit.Extensions;
 
-public class ZonitCultureExtension : ComponentBase, IDisposable
+public sealed class ZonitCultureExtension : ComponentBase, IDisposable
 {
     [Inject]
-    protected ICultureRepository Culture { get; set; } = null!;
+    ICultureRepository Culture { get; set; } = default!;
 
     [Inject]
-    PersistentComponentState ApplicationState { get; set; } = null!;
+    PersistentComponentState ApplicationState { get; set; } = default!;
 
     string CultureName { get; set; } = null!;
     PersistingComponentStateSubscription persistingSubscription;
@@ -19,13 +19,9 @@ public class ZonitCultureExtension : ComponentBase, IDisposable
         persistingSubscription = ApplicationState.RegisterOnPersisting(PersistData);
 
         if (!ApplicationState.TryTakeFromJson<string>("ZonitCultureExtension", out var restored))
-        {
             CultureName = Culture.GetCulture;
-        }
         else
-        {
             CultureName = restored!;
-        }
 
         Culture.SetCulture(CultureName);
     }
@@ -37,6 +33,6 @@ public class ZonitCultureExtension : ComponentBase, IDisposable
         return Task.CompletedTask;
     }
 
-    void IDisposable.Dispose()
+    public void Dispose()
         => persistingSubscription.Dispose();
 }
