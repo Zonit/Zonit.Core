@@ -1,12 +1,11 @@
-﻿using Zonit.Extensions.Website.Abstractions.Navigations;
-using Zonit.Extensions.Website.Abstractions.Navigations.Models;
+﻿using Zonit.Extensions.Website.Abstractions.Navigations.Models;
 using Zonit.Extensions.Website.Abstractions.Navigations.Types;
 
 namespace Zonit.Extensions.Website.Navigations.Services;
 
-internal class NavigationService : INavigation
+internal class NavigationService : INavigationProvider
 {
-    IList<NavGroupModel> _navigationModels = [];
+    readonly IList<NavGroupModel> _navigationModels = [];
 
     public IReadOnlyList<NavGroupModel>? Get(AreaType area)
         => _navigationModels?

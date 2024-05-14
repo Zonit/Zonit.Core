@@ -20,15 +20,13 @@ Add this in ``Routes.razor``
 <ZonitCookiesExtension />
 ```
 
-**Register:**
-
 Services in ``Program.cs``
 ```cs
-    builder.Services.AddCookiesExtension();
+builder.Services.AddCookiesExtension();
 ```
 App in ``Program.cs``
 ```cs
-    app.UseCookiesExtension();
+app.UseCookiesExtension();
 ```
 
 ### Example:
@@ -36,8 +34,8 @@ App in ``Program.cs``
 ```razor
 @page "/"
 @rendermode InteractiveServer
-@using Zonit.Extensions.Website.Abstractions.Cookies
-@inject ICookie Cookie
+@using Zonit.Extensions.Website
+@inject ICookieProvider Cookie
 
 @foreach (var cookie in Cookie.GetCookies())
 {

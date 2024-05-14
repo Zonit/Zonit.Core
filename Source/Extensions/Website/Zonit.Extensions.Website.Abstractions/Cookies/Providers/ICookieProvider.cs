@@ -1,8 +1,8 @@
 ﻿using Zonit.Extensions.Website.Abstractions.Cookies.Models;
 
-namespace Zonit.Extensions.Website.Abstractions.Cookies;
+namespace Zonit.Extensions.Website;
 
-public interface ICookie
+public interface ICookieProvider
 {
     public CookieModel? Get(string key);
     public CookieModel Set(string key, string value, int days = 12 * 30);

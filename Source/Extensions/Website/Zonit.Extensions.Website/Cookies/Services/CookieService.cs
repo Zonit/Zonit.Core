@@ -1,15 +1,13 @@
-﻿using Zonit.Extensions.Website.Abstractions.Cookies.Models;
-using Zonit.Extensions.Website.Abstractions.Cookies;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
+using Zonit.Extensions.Website.Abstractions.Cookies.Models;
 using Zonit.Extensions.Website.Cookies.Repositories;
-using Microsoft.AspNetCore.DataProtection.KeyManagement;
 
 namespace Zonit.Extensions.Website.Cookies.Services;
 
 public class CookieService(
     IJSRuntime _runtime,
     ICookiesRepository _cookieRepository
-    ) : ICookie
+    ) : ICookieProvider
 {
     List<CookieModel> Cookies { get; set; } = _cookieRepository.GetCookies();
 
