@@ -13,6 +13,8 @@ public static class ServiceCollectionExtensions
         services.AddSingleton<DefaultTranslationRepository>();
         services.AddSingleton<MissingTranslationRepository>();
 
+        services.AddSingleton<ITranslationManager, TranslationService>();
+
         services.AddSingleton<DetectCultureService>();
 
         services.AddScoped<ICultureRepository, CultureRepository>();

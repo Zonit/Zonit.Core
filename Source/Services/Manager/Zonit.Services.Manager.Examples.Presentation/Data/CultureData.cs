@@ -1,10 +1,10 @@
 ﻿using Microsoft.Extensions.Hosting;
+using Zonit.Extensions.Cultures;
 using Zonit.Extensions.Cultures.Models;
-using Zonit.Extensions.Cultures.Repositories;
 
 namespace Zonit.Services.Manager.Examples.Presentation.Data;
 
-internal class CultureData(TranslationRepository _translationRepository) : IHostedService
+internal class CultureData(ITranslationManager _translationRepository) : IHostedService
 {
     public Task StartAsync(CancellationToken cancellationToken)
     {
