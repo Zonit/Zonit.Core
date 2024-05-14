@@ -2,6 +2,7 @@
 	<PropertyGroup>
 		<OutputType>Library</OutputType>
 		<StaticWebAssetBasePath>Dashboard</StaticWebAssetBasePath>
+		<IsPackable>true</IsPackable>
 	</PropertyGroup>
 	
 	<ItemGroup>
