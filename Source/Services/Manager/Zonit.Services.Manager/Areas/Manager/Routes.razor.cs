@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Components;
 using System.Reflection;
-using Zonit.Extensions.Website.Abstractions.Areas;
+using Zonit.Extensions.Website;
 
 namespace Zonit.Services.Manager.Areas.Manager;
 

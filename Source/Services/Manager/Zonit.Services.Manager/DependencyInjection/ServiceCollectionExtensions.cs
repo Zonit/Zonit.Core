@@ -46,43 +46,36 @@ public static class ServiceCollectionExtensions
             //config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         });
 
-
+#if DEBUG
         services.TryAddTransient<IUserProvider, UserTest>();
         services.TryAddTransient<ISessionProvider, SessionTest>();
+#endif
 
         return services;
     }
 }
 
+#if DEBUG
 public class UserTest : IUserProvider
 {
-    public async Task<UserModel?> GetByIdAsync(Guid id)
+    UserModel? UserModel { get; set; } = new()
     {
-        return new UserModel
-        { 
-            Name = "NoUser",
-            DisplayRole = "Admin"
-        };
-    }
+        Name = "NoUser",
+    };
 
-    public async Task<UserModel?> GetByUserNameAsync(string userName)
-    {
-        return new UserModel
-        {
-            Name = "NoUser",
-            DisplayRole = "Admin"
-        };
-    }
+    public Task<UserModel?> GetByIdAsync(Guid id)
+        => Task.FromResult(UserModel);
+
+    public Task<UserModel?> GetByUserNameAsync(string userName)
+        => Task.FromResult(UserModel);
 }
 
 public class SessionTest : ISessionProvider
 {
     public async Task<UserModel?> GetByTokenAsync(string token)
-    {
-        return new UserModel
+        => new UserModel
         {
             Name = "NoUser",
-            DisplayRole = "Admin"
         };
-    }
 }
+#endif

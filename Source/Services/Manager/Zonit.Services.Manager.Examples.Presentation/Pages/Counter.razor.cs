@@ -1,7 +1,5 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Components;
-using Microsoft.VisualBasic;
-using Zonit.Extensions.Website.Abstractions.Areas;
+﻿using Microsoft.AspNetCore.Components;
+using Zonit.Extensions.Website;
 
 namespace Zonit.Services.Manager.Examples.Presentation.Pages;
 

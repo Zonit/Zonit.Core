@@ -1,4 +1,4 @@
-﻿namespace Zonit.Extensions.Website.Abstractions.Areas;
+﻿namespace Zonit.Extensions.Website;
 
 public interface IAreaManager : IArea
 {
