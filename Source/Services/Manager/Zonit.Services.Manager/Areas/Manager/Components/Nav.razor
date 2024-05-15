@@ -12,16 +12,16 @@
 {
     @foreach (var nav in NavItems)
     {
-        @if (nav.Childs is null && nav.Link is not null)
+        @if (nav.Children is null && nav.Link is not null)
         {
             <MudNavLink Href="@nav.Link.Url" Match="NavLinkMatch.Prefix" Target="@nav.Link.Target" Icon="@nav.Icon">
                 <div style="padding-left: 12px">@Culture.Translate(nav.Title)</div>
             </MudNavLink>
         }
-        else if (nav.Childs is not null)
+        else if (nav.Children is not null)
         {
             <MudNavGroup Title="@Culture.Translate(nav.Title)" Icon="@nav.Icon" Expanded=@nav.Expanded>
-                @foreach (var link in nav.Childs.OrderBy(x => x.Order).ToList())
+                @foreach (var link in nav.Children.OrderBy(x => x.Order).ToList())
                 {
                     <MudNavLink Href="@link.Url" Match="@(link.Match ? NavLinkMatch.All : NavLinkMatch.Prefix)" Target="@link.Target" Icon="@link.Icon">@Culture.Translate(link.Title)</MudNavLink>
                 }

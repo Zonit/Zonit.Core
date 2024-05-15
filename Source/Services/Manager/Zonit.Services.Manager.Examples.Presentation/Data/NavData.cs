@@ -47,7 +47,7 @@ internal class NavData(INavigationProvider _navigation) : IHostedService
             Area = AreaType.ManagerRight,
             Order = 70,
             Expanded = true,
-            Childs = [
+            Children = [
                 new(){
                     Title = "Wallet information",
                     Url = "Wallets",
@@ -77,7 +77,7 @@ internal class NavData(INavigationProvider _navigation) : IHostedService
             Order = 70,
             Expanded = true,
             Icon = IconData.RechargeIcon,
-            Childs = [
+            Children = [
                 new(){
                     Title = "Wallet information",
                     Url = "Wallets",

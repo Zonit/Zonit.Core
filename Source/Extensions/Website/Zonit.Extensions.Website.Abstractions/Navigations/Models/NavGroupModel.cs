@@ -9,7 +9,7 @@ public class NavGroupModel
     public LinkModel? Link { get; set; }
     public string? Permission { get; set; }
     public bool Expanded { get; set; } = false;
-    public List<NavLinkModel>? Childs { get; set; }
+    public List<NavLinkModel>? Children { get; set; }
     public AreaType? Area { get; set; }
     public int Order { get; set; }
 }

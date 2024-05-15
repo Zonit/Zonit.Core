@@ -16,6 +16,8 @@ public class UserModel
 
     public List<CredentialModel> Credentials { get; set; } = [];
 
+    // Culture
     // Data stworzenia
     // Informacje
+    // Status
 }
