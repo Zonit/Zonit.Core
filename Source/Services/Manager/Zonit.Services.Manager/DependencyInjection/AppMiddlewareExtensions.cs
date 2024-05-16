@@ -14,6 +14,35 @@ public static class AppMiddlewareExtensions
             app.UseRouting();
             app.UseAntiforgery();
 
+            app.UseStatusCodePages(context =>
+            {
+                var response = context.HttpContext.Response;
+                var request = context.HttpContext.Request;
+                var pathBase = request.PathBase;
+
+                switch (response.StatusCode)
+                {
+                    case 401:
+                        response.Redirect($"{pathBase}/Errors/401");
+                        break;
+                    case 403:
+                        response.Redirect($"{pathBase}/Errors/403");
+                        break;
+                    case 404:
+                        response.Redirect($"{pathBase}/Errors/404");
+                        break;
+                    case 500:
+                        response.Redirect($"{pathBase}/Errors/500");
+                        break;
+                }
+
+                //response.Redirect("Errors/401");
+                //response.HttpContext.Request.Path = "/Errors/403";
+                //response.WriteAsync("Error 403 - Forbidden");
+
+                return Task.CompletedTask;
+            });
+
             app.UseIdentityExtension();
             app.UseCookiesExtension();
             app.UseCultureExtension();

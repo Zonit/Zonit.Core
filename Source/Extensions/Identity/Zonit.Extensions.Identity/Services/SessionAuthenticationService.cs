@@ -19,7 +19,7 @@ internal class SessionAuthenticationService(IAuthenticatedProvider _authenticate
         var claims = new List<Claim>
         {
             new (ClaimTypes.Name, _authenticated.User.Name),
-            new (ClaimTypes.GivenName, _authenticated.User.Id.ToString())
+            new (ClaimTypes.NameIdentifier, _authenticated.User.Id.ToString()),
         };
 
         if (_authenticated.User.Roles is not null)

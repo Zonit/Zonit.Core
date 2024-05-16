@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Components;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Components;
 using MudBlazor;
 using MudBlazor.Services;
 
-namespace Zonit.Services.Manager.Areas.Manager.Layout;
+namespace Zonit.Services.Manager.Areas.Manager.Layouts;
 
+[Authorize]
 public partial class MainLayout : LayoutComponentBase, IAsyncDisposable, IBrowserViewportObserver
 {
     [Inject]

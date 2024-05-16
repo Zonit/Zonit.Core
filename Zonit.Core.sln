@@ -75,7 +75,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Cultures",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Website", "Source\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj", "{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Zonit.Extensions.Identity", "Source\Extensions\Identity\Zonit.Extensions.Identity\Zonit.Extensions.Identity.csproj", "{52303E7D-A0D1-4811-AA07-C8FBCD365A08}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Identity", "Source\Extensions\Identity\Zonit.Extensions.Identity\Zonit.Extensions.Identity.csproj", "{52303E7D-A0D1-4811-AA07-C8FBCD365A08}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

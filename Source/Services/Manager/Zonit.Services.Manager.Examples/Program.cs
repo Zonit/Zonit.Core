@@ -15,7 +15,13 @@ namespace Zonit.Services.Manager.Examples
             StaticWebAssetsLoader.UseStaticWebAssets(builder.Environment, builder.Configuration);
 
             var app = builder.Build();
+
+            //app.UseAntiforgery();
+            //app.MapRazorComponents<App>()
+            //    .AddInteractiveServerRenderMode();
+
             app.UseManagerService();
+
             app.Run();
         }
     }

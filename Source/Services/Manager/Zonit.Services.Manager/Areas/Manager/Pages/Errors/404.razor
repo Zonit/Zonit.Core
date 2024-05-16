@@ -1,0 +1,12 @@
+﻿@page "/errors/404"
+@layout ErrorLayout
+@inject ICultureProvider Culture
+
+<MudCard>
+    <MudCardHeader>
+        <MudText Typo="Typo.h6">@Culture.Translate("Not Found")</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+        <p>@Culture.Translate("The requested resource could not be found.")</p>
+    </MudCardContent>
+</MudCard>

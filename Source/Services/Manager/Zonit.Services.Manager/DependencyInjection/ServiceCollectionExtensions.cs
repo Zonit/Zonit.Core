@@ -1,7 +1,6 @@
 ﻿using MudBlazor;
 using MudBlazor.Services;
 using Zonit.Extensions;
-using Zonit.Extensions.Identity.Abstractions.Entities;
 using Zonit.Extensions.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Zonit.Extensions.Identity.Abstractions.Models;
@@ -20,6 +19,7 @@ public static class ServiceCollectionExtensions
         services.AddNavigationsExtension();
 
         services.AddAntiforgery();
+
         services
             .AddRazorComponents()
             .AddInteractiveServerComponents();
@@ -61,6 +61,7 @@ public class UserTest : IUserProvider
     UserModel? UserModel { get; set; } = new()
     {
         Name = "NoUser",
+        Roles = ["User", "TwojaStara"]
     };
 
     public Task<UserModel?> GetByIdAsync(Guid id)
@@ -76,6 +77,7 @@ public class SessionTest : ISessionProvider
         => new UserModel
         {
             Name = "NoUser",
+            Roles = ["User", "TwojaStara"]
         };
 }
 #endif

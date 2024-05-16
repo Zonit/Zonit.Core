@@ -3,6 +3,10 @@
 		<OutputType>Library</OutputType>
 		<StaticWebAssetBasePath>Dashboard</StaticWebAssetBasePath>
 		<IsPackable>true</IsPackable>
+		
+		<!--<AssemblyVersion>0.0.20</AssemblyVersion>
+		<FileVersion>$(AssemblyVersion)</FileVersion>
+		<Version>$(AssemblyVersion)</Version>-->
 	</PropertyGroup>
 	
 	<ItemGroup>
@@ -23,10 +27,6 @@
 	  <ProjectReference Include="..\..\..\Extensions\Identity\Zonit.Extensions.Identity\Zonit.Extensions.Identity.csproj" />
 	  <ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj" />
 	  <ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Areas\Manager\Pages\" />
 	</ItemGroup>
 
 </Project>

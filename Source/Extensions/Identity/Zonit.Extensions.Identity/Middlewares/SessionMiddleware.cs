@@ -30,5 +30,6 @@ internal class SessionMiddleware(RequestDelegate _next)
         userRepository.Inicjalize(session);
 
         await _next(httpContext);
+        return;
     }
 }
