@@ -4,9 +4,9 @@
 		<StaticWebAssetBasePath>Dashboard</StaticWebAssetBasePath>
 		<IsPackable>true</IsPackable>
 		
-		<!--<AssemblyVersion>0.0.20</AssemblyVersion>
+		<AssemblyVersion>0.0.22</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
-		<Version>$(AssemblyVersion)</Version>-->
+		<Version>$(AssemblyVersion)</Version>
 	</PropertyGroup>
 	
 	<ItemGroup>

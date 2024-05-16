@@ -40,6 +40,22 @@ internal class NavData(INavigationProvider _navigation) : IHostedService
             Icon = IconData.GiftIcon,
             Link = new("Counter", "Counter"),
         });
+        _navigation.Add(new()
+        {
+            Title = "Counter Policy",
+            Area = AreaType.Manager,
+            Order = 60,
+            Icon = IconData.GiftIcon,
+            Link = new("Counter Policy", "Counter2"),
+        });
+        _navigation.Add(new()
+        {
+            Title = "claims-principle-data",
+            Area = AreaType.Manager,
+            Order = 60,
+            Icon = IconData.GiftIcon,
+            Link = new("claims-principle-data", "claims-principle-data"),
+        });
 
         _navigation.Add(new()
         {

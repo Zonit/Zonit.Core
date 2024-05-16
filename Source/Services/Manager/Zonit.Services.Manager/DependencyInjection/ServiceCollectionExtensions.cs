@@ -46,6 +46,8 @@ public static class ServiceCollectionExtensions
             //config.SnackbarConfiguration.SnackbarVariant = Variant.Filled;
         });
 
+        services.AddMudServices();
+
 #if DEBUG
         services.TryAddTransient<IUserProvider, UserTest>();
         services.TryAddTransient<ISessionProvider, SessionTest>();
