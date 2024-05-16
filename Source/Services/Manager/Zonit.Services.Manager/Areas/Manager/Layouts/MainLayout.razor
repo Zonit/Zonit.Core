@@ -16,9 +16,10 @@
 @inject IJSRuntime JSRuntime
 @inject ICultureProvider Culture
 @inject ICultureRepository CultureRepository
+@inject ICookieProvider Cookie
 @inject IAuthenticatedProvider Authenticated
 
-<MudThemeProvider Theme="MyCustomTheme" @ref="@_mudThemeProvider" @bind-IsDarkMode="@_isDarkMode" />
+<MudThemeProvider Theme="MyCustomTheme" @ref="@_mudThemeProvider" IsDarkMode="_isDarkMode" />  @* @bind-IsDarkMode="@_isDarkMode" *@
 <MudDialogProvider FullWidth="true" Position="DialogPosition.Center" MaxWidth="MaxWidth.ExtraSmall" CloseOnEscapeKey="true" />
 <MudPopoverProvider />
 <MudSnackbarProvider />
@@ -188,16 +189,13 @@
     bool _drawerOpenMin = false;
     DrawerVariant _drawerVariant = DrawerVariant.Responsive;
     bool _drawerRightOpen = false;
-    bool _isDarkMode;
+    bool _isDarkMode = false;
     MudThemeProvider _mudThemeProvider = null!;
 
     bool RightToLeft = false;
 
     protected override void OnInitialized()
     {
-        // if (Authenticated.User is null)
-        //     NavigationManager.NavigateTo("/Identity/Auth");
-
         Culture.OnChange += () =>
         {
             if (Culture.GetCulture == "ar-sa")
@@ -211,17 +209,6 @@
 
     public void Dispose()
         => Culture.OnChange -= StateHasChanged;
-
-    // protected override async Task OnInitializedAsync()
-    // {
-    //     // var authenticationState = await AuthenticationStateProvider.GetAuthenticationStateAsync();
-    //     // if (authenticationState.User.Identity?.IsAuthenticated == false)
-    //     // {
-    //     //     NavigationManager.NavigateTo("/Identity/Auth");
-    //     // }
-
-    //     // Organization = await UserOrganizationService.GetDefaultAsync(authenticationState.User.Identity.);
-    // }
 
     public void OnSwipe(SwipeEventArgs args)
     {

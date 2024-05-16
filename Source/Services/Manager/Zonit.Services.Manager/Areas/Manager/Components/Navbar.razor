@@ -59,18 +59,15 @@
             switch (darkMode.Value)
             {
                 case "night":
-                    _darkTheme = true;
                     _darkModeIcon = IconData.DarkThemeNight;
                     _darkModeTooltip = "Switch to Light Theme";
                     break;
                 case "day":
 
-                    _darkTheme = false;
                     _darkModeIcon = IconData.DarkThemeDay;
                     _darkModeTooltip = "Switch to Auto Theme";
                     break;
                 default:
-                    _darkTheme = null;
                     _darkModeIcon = IconData.DarkThemeAuto;
                     _darkModeTooltip = "Switch to Dark Theme";
                     break;
@@ -78,16 +75,26 @@
         }
     }
 
+    protected override async Task OnInitializedAsync()
+    {
+        var darkTheme = Cookie.Get("DarkMode");
+        if (darkTheme is not null)
+            if (darkTheme.Value == "night")
+            {
+                DarkMode = true;
+                await DarkModeChanged.InvokeAsync(DarkMode);
+            }
+            else if (darkTheme.Value == "day")
+            {
+                DarkMode = false;
+                await DarkModeChanged.InvokeAsync(DarkMode);
+            }
+    }
+
     void IDisposable.Dispose()
     {
         Culture.OnChange -= StateHasChanged;
     }
-
-    // protected override async Task OnInitializedAsync()
-    // {
-
-    // }
-
 
     void DrawerToggle()
     {
@@ -156,8 +163,12 @@
     {
         if (firstRender)
         {
-            DarkMode = await MudThemeProvider.GetSystemPreference();
-            await DarkModeChanged.InvokeAsync(DarkMode);
+            var darkTheme = Cookie.Get("DarkMode");
+            if (darkTheme is null || darkTheme.Value == "auto")
+            {
+                DarkMode = await MudThemeProvider.GetSystemPreference();
+                await DarkModeChanged.InvokeAsync(DarkMode);
+            }
 
             StateHasChanged();
         }
