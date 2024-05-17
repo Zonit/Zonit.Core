@@ -27,14 +27,12 @@ public partial class MainLayout : LayoutComponentBase, IAsyncDisposable, IBrowse
         {
             await BrowserViewportService.SubscribeAsync(this, fireImmediately: true);
         }
-
-        await base.OnAfterRenderAsync(firstRender);
     }
 
     public async ValueTask DisposeAsync() 
         => await BrowserViewportService.UnsubscribeAsync(this);
 
-    Task IBrowserViewportObserver.NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs browserViewportEventArgs)
+    async Task IBrowserViewportObserver.NotifyBrowserViewportChangeAsync(BrowserViewportEventArgs browserViewportEventArgs)
     {
         _width = browserViewportEventArgs.BrowserWindowSize.Width;
         _height = browserViewportEventArgs.BrowserWindowSize.Height;
@@ -72,6 +70,6 @@ public partial class MainLayout : LayoutComponentBase, IAsyncDisposable, IBrowse
                 break;
         }
 
-        return InvokeAsync(StateHasChanged);
+        await InvokeAsync(StateHasChanged);
     }
 }

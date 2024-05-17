@@ -169,8 +169,6 @@
                 DarkMode = await MudThemeProvider.GetSystemPreference();
                 await DarkModeChanged.InvokeAsync(DarkMode);
             }
-
-            StateHasChanged();
         }
     }
 }
