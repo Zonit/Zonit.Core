@@ -7,7 +7,7 @@ namespace Zonit.Extensions.Cultures.Middlewares;
 
 internal class CultureMiddleware(RequestDelegate _next)
 {
-    public Task Invoke(HttpContext httpContext, DetectCultureService detectCultureService,  ICultureRepository _culture)
+    public Task Invoke(HttpContext httpContext, DetectCultureService detectCultureService, ICultureManager _culture)
     {
         if (httpContext.Request.Path.Value is null)
             return _next(httpContext);

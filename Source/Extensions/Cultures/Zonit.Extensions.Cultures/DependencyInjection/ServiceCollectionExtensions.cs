@@ -17,7 +17,7 @@ public static class ServiceCollectionExtensions
 
         services.AddSingleton<DetectCultureService>();
 
-        services.AddScoped<ICultureRepository, CultureRepository>();
+        services.AddScoped<ICultureManager, CultureRepository>();
         services.AddScoped<ICultureProvider, CultureService>();
 
         return services;

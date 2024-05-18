@@ -1,19 +1,21 @@
 ﻿using System.Globalization;
+using System.Reflection.Metadata;
+using Zonit.Extensions.Cultures.Models;
 using Zonit.Extensions.Cultures.Repositories;
 
 namespace Zonit.Extensions.Cultures.Services;
 
-public class CultureService: ICultureProvider
+public class CultureService : ICultureProvider
 {
 
     private readonly TranslationRepository _translationRepository;
     private readonly MissingTranslationRepository _missingTranslationRepository;
-    private readonly ICultureRepository _cultureRepository;
+    private readonly ICultureManager _cultureRepository;
 
     public CultureService(
         TranslationRepository translationRepository,
         MissingTranslationRepository missingTranslationRepository,
-        ICultureRepository cultureRepository
+        ICultureManager cultureRepository
     )
     {
         _translationRepository = translationRepository;
@@ -25,6 +27,14 @@ public class CultureService: ICultureProvider
         GetCulture = _cultureRepository.GetCulture;
     }
 
+    private DateTimeFormatModel _dateTimeFormat = new()
+    {
+        ShortDatePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern,
+        ShortTimePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern
+    };
+
+    public DateTimeFormatModel DateTimeFormat => _dateTimeFormat;
+
     public string GetCulture { get; private set; }
 
     public event Action? OnChange;
@@ -32,6 +42,13 @@ public class CultureService: ICultureProvider
     private void HandleCultureRepositoryChange()
     {
         GetCulture = _cultureRepository.GetCulture;
+
+        _dateTimeFormat = new()
+        {
+            ShortDatePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern,
+            ShortTimePattern = CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern
+        };
+
         StateChanged();
     }
 
@@ -84,5 +101,12 @@ public class CultureService: ICultureProvider
         }
 
         return args is not null ? string.Format(content, args) : content;
+    }
+
+    public DateTime ClientTimeZone(DateTime utcDateTime)
+    {
+        var timeZone = TimeZoneInfo.FindSystemTimeZoneById(_cultureRepository.GetTimeZone);
+
+        return TimeZoneInfo.ConvertTimeFromUtc(utcDateTime, timeZone);
     }
 }

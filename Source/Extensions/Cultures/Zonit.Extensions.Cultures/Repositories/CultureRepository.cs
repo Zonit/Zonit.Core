@@ -2,11 +2,14 @@
 
 namespace Zonit.Extensions.Cultures.Repositories;
 
-internal class CultureRepository : ICultureRepository
+internal class CultureRepository : ICultureManager
 {
-    private string _culture = "en-US";
+    string _culture = "en-US";
+    string _getTimeZone = "Europe/Warsaw";
 
     public string GetCulture => _culture;
+
+    public string GetTimeZone => _getTimeZone;
 
     public void SetCulture(string culture)
     {
@@ -22,8 +25,17 @@ internal class CultureRepository : ICultureRepository
         StateChanged();
     }
 
+    public void SetTimeZone(string timeZone)
+    {
+        _getTimeZone = timeZone;
+
+        StateChanged();
+    }
+
     public event Action? OnChange;
-    public void StateChanged() => OnChange?.Invoke();
+
+    public void StateChanged() 
+        => OnChange?.Invoke();
 }
 
 // TODO: Warto ogarnąć

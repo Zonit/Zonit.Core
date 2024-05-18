@@ -36,5 +36,5 @@ public interface IUserOrganizationService
     /// </summary>
     /// <param name="identityId">User ID</param>
     /// <returns></returns>
-    public Task<IReadOnlyCollection<Organization>?> GetOrganizationsAsync(Guid identityId);
+    public Task<IReadOnlyCollection<Organization>?> GetOrganizationsAsync(Guid userId);
 }

@@ -2,11 +2,6 @@
 
 public class Organization
 {
-    public Organization()
-    {
-
-    }
-
     public Guid Id { get; set; }
 
     /// <summary>

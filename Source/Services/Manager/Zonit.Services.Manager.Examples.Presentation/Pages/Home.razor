@@ -48,11 +48,23 @@
         </MudTabs>
 </MudPaper>
 
+<MudCard>
+    <MudCardHeader >
+        <MudText Typo="Typo.h6">Card Header</MudText>
+    </MudCardHeader>
+    <MudCardContent>
+            <MudTextField data-clarity-mask="false" @bind-Value="TextValue" Label="Standard" Variant="Variant.Text"></MudTextField>
+    </MudCardContent>
+    <MudCardActions>
+        <MudButton>Click me</MudButton>
+    </MudCardActions>
+</MudCard>
 
 </div>
 
 @code {
     private int currentCount = 0;
+    string TextValue { get; set; } = "Hello, World!";
 
     private void IncrementCount()
     {

@@ -34,8 +34,21 @@
     </MudPaper>
 
     <MudPaper Class="my-3">
-        @DateTime.UtcNow.ToLocalTime().ToString($"{CultureInfo.CurrentCulture.DateTimeFormat.ShortDatePattern} {CultureInfo.CurrentCulture.DateTimeFormat.ShortTimePattern}")
+        @Culture.ClientTimeZone(DateTime.UtcNow).ToString($"{Culture.DateTimeFormat.ShortDatePattern} {Culture.DateTimeFormat.ShortTimePattern}")
     </MudPaper>
+
+    <MudCard>
+        <MudCardHeader>
+            <MudText Typo="Typo.h6">Card Header</MudText>
+        </MudCardHeader>
+        <MudCardContent>
+            <form action="" method="get" data-clarity-mask="false">
+                <label for="GET-name">User Name:</label>
+                <input id="GET-name" type="text" name="name">
+                <input type="submit" value="Submit">
+            </form>
+        </MudCardContent>
+    </MudCard>
 
     @code {
         public DateTime DateTimeOffset1 = new DateTime(2023, 12, 5, 18, 0, 0);

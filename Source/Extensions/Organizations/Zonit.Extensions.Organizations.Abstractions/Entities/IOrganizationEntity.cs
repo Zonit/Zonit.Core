@@ -1,6 +1,6 @@
 ﻿namespace Zonit.Extensions.Organizations.Abstractions.Entities;
 
-public interface IOrganizationEntite
+public interface IOrganizationEntity
 {
     /// <summary>
     /// Organization ID

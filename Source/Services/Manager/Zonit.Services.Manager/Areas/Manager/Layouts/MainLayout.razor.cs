@@ -9,7 +9,8 @@ namespace Zonit.Services.Manager.Areas.Manager.Layouts;
 public partial class MainLayout : LayoutComponentBase, IAsyncDisposable, IBrowserViewportObserver
 {
     [Inject]
-    private IBrowserViewportService BrowserViewportService { get; set; } = null!;
+    IBrowserViewportService BrowserViewportService { get; set; } = null!;
+
     Guid IBrowserViewportObserver.Id { get; } = Guid.NewGuid();
 
     ResizeOptions IBrowserViewportObserver.ResizeOptions { get; } = new()

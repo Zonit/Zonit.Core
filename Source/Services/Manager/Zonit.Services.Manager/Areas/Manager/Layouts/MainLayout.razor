@@ -15,7 +15,7 @@
 
 @inject IJSRuntime JSRuntime
 @inject ICultureProvider Culture
-@inject ICultureRepository CultureRepository
+@inject ICultureManager CultureRepository
 @inject ICookieProvider Cookie
 @inject IAuthenticatedProvider Authenticated
 
@@ -131,7 +131,7 @@
             </MudDrawer>
 
             <MudMainContent>
-                <div style="min-height: 100vh; margin-top: 20px; margin-bottom: 20px;">
+                <div style="min-height: 100vh; margin-top: 20px; margin-bottom: 20px;" data-clarity-unmask="true">
                     @Body
                 </div>
             </MudMainContent>

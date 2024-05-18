@@ -1,12 +1,12 @@
 ﻿using Microsoft.AspNetCore.Components;
-using Zonit.Extensions.Cultures.Repositories;
+using Zonit.Extensions.Cultures;
 
 namespace Zonit.Extensions;
 
 public sealed class ZonitCultureExtension : ComponentBase, IDisposable
 {
     [Inject]
-    ICultureRepository Culture { get; set; } = default!;
+    ICultureManager Culture { get; set; } = default!;
 
     [Inject]
     PersistentComponentState ApplicationState { get; set; } = default!;
