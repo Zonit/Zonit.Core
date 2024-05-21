@@ -13,6 +13,11 @@ public interface ICultureManager
     public string GetTimeZone { get; }
 
     /// <summary>
+    /// Get list of supported cultures
+    /// </summary>
+    public string[] SupportedCultures { get; }
+
+    /// <summary>
     /// Changing the default language
     /// </summary>
     /// <param name="culture">Language parameter in BCP 47 standard</param>

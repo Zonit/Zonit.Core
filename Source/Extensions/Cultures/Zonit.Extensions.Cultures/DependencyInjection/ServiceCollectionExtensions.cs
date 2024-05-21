@@ -1,5 +1,7 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Zonit.Extensions.Cultures;
+using Zonit.Extensions.Cultures.Abstractions.Options;
 using Zonit.Extensions.Cultures.Repositories;
 using Zonit.Extensions.Cultures.Services;
 
@@ -9,6 +11,11 @@ public static class ServiceCollectionExtensions
 {
     public static IServiceCollection AddCulturesExtension(this IServiceCollection services)
     {
+        services.AddOptions<CultureOption>()
+            .Configure<IConfiguration>(
+                (options, configuration) =>
+                    configuration.GetSection("Culture").Bind(options));
+
         services.AddSingleton<TranslationRepository>();
         services.AddSingleton<DefaultTranslationRepository>();
         services.AddSingleton<MissingTranslationRepository>();

@@ -1,12 +1,15 @@
 ﻿using Microsoft.AspNetCore.Http;
+using Microsoft.Extensions.Options;
 using System.Globalization;
-using Zonit.Extensions.Cultures.Repositories;
+using Zonit.Extensions.Cultures.Abstractions.Options;
 using Zonit.Extensions.Cultures.Services;
 
 namespace Zonit.Extensions.Cultures.Middlewares;
 
-internal class CultureMiddleware(RequestDelegate _next)
+internal class CultureMiddleware(RequestDelegate _next, IOptions<CultureOption> settings)
 {
+    private readonly CultureOption _settings = settings.Value;
+
     public Task Invoke(HttpContext httpContext, DetectCultureService detectCultureService, ICultureManager _culture)
     {
         if (httpContext.Request.Path.Value is null)
@@ -70,12 +73,14 @@ internal class CultureMiddleware(RequestDelegate _next)
             }
 
             var preferredLanguage = httpContext.Request.GetTypedHeaders().AcceptLanguage?.FirstOrDefault()?.Value.ToString();
-            var cultureInfo2 = CultureInfo.GetCultureInfo(preferredLanguage ?? "en-us");
+            var cultureInfo2 = CultureInfo.GetCultureInfo(preferredLanguage ?? _settings.DefaultCulture);
 
             CultureInfo.CurrentCulture = cultureInfo2;
             CultureInfo.CurrentUICulture = cultureInfo2;
 
             _culture.SetCulture(CultureInfo.CreateSpecificCulture(cultureInfo2.Name).Name.ToLower());
+
+            //httpContext.Response.Cookies.Append("Culture", CultureInfo.CreateSpecificCulture(cultureInfo2.Name).Name.ToLower(), new CookieOptions { Expires = DateTime.UtcNow.AddYears(1) });
         }
 
         return _next(httpContext);

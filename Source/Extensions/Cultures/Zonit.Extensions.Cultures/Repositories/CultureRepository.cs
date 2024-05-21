@@ -6,10 +6,33 @@ internal class CultureRepository : ICultureManager
 {
     string _culture = "en-US";
     string _getTimeZone = "Europe/Warsaw";
+    string[] _supportedCultures = [
+        "en-us",
+        "ar-sa",
+        "fr-fr",
+        "de-de",
+        "es-es",
+        "it-it",
+        "nl-nl",
+        "sv-se",
+        "da-dk",
+        "no-no",
+        "fi-fi",
+        "ru-ru",
+        "pl-pl",
+        "cs-cz",
+        "hu-hu",
+        "sk-sk",
+        "pt-pt"
+        ];
 
     public string GetCulture => _culture;
 
     public string GetTimeZone => _getTimeZone;
+
+    // TODO: Jest to zła implementacja, jest to SCOPE a powinno być SINGLETON. Język raczej nie będzie tylko dla konkretnego użytkownika lecz dla całej aplikacji
+    // Myślę że można zrobić nową klasę która będzie zajmowała się ogólnymi ustawieniami dla całej aplikacji
+    public string[] SupportedCultures => _supportedCultures;
 
     public void SetCulture(string culture)
     {
