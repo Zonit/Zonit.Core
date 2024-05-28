@@ -14,7 +14,6 @@
 	</ItemGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Extensions\Organizations\Zonit.Extensions.Organizations.Abstractions\Zonit.Extensions.Organizations.Abstractions.csproj" />
 		<ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj" />
 	</ItemGroup>
 </Project>

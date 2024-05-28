@@ -23,7 +23,6 @@
 	</ItemGroup>-->
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Extensions\Organizations\Zonit.Extensions.Organizations\Zonit.Extensions.Organizations.csproj" />
 	  <ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj" />
 	</ItemGroup>
 
