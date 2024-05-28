@@ -61,16 +61,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{8A8B
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Website.Abstractions", "Source\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj", "{00EAEAFE-71D8-4E4C-A73D-B9B025C01CA3}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cultures", "Cultures", "{BB25C094-EF08-45B0-860E-11A62C1E6C9E}"
-	ProjectSection(SolutionItems) = preProject
-		Source\Extensions\Cultures\Readme.md = Source\Extensions\Cultures\Readme.md
-	EndProjectSection
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Cultures.Abstractions", "Source\Extensions\Cultures\Zonit.Extensions.Cultures.Abstractions\Zonit.Extensions.Cultures.Abstractions.csproj", "{7DBF115B-5B4D-4DD1-8894-188331279FD2}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Services.Manager.Examples.Presentation", "Source\Services\Manager\Zonit.Services.Manager.Examples.Presentation\Zonit.Services.Manager.Examples.Presentation.csproj", "{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Cultures", "Source\Extensions\Cultures\Zonit.Extensions.Cultures\Zonit.Extensions.Cultures.csproj", "{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Website", "Source\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj", "{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}"
 EndProject
@@ -134,18 +125,10 @@ Global
 		{00EAEAFE-71D8-4E4C-A73D-B9B025C01CA3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{00EAEAFE-71D8-4E4C-A73D-B9B025C01CA3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{00EAEAFE-71D8-4E4C-A73D-B9B025C01CA3}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7DBF115B-5B4D-4DD1-8894-188331279FD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7DBF115B-5B4D-4DD1-8894-188331279FD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7DBF115B-5B4D-4DD1-8894-188331279FD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7DBF115B-5B4D-4DD1-8894-188331279FD2}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -179,10 +162,7 @@ Global
 		{143A01A7-228E-4B48-A09D-0173B263C349} = {BFB015E5-BD1A-4B14-8383-FBD78D6CCFCB}
 		{8A8B0D31-375E-4C2F-8D94-A1A193F58A13} = {3B46835C-A1E6-4C0F-954B-F027AA91998B}
 		{00EAEAFE-71D8-4E4C-A73D-B9B025C01CA3} = {8A8B0D31-375E-4C2F-8D94-A1A193F58A13}
-		{BB25C094-EF08-45B0-860E-11A62C1E6C9E} = {3B46835C-A1E6-4C0F-954B-F027AA91998B}
-		{7DBF115B-5B4D-4DD1-8894-188331279FD2} = {BB25C094-EF08-45B0-860E-11A62C1E6C9E}
 		{CDA62A9B-36FE-49E9-9E01-8C54F6FB602A} = {BFB015E5-BD1A-4B14-8383-FBD78D6CCFCB}
-		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76} = {BB25C094-EF08-45B0-860E-11A62C1E6C9E}
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4} = {8A8B0D31-375E-4C2F-8D94-A1A193F58A13}
 		{3BDA964F-0128-438D-8DF3-898500D39F21} = {167CE2C7-4324-466E-B60C-80F520793080}
 	EndGlobalSection
