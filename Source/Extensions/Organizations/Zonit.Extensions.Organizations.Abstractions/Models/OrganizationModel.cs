@@ -10,6 +10,11 @@ public class OrganizationModel
     public string Name { get; set; } = string.Empty;
 
     /// <summary>
+    /// Informacje o organizacji
+    /// </summary>
+    public FieldModel Field { get; set; } = new();
+
+    /// <summary>
     /// Date of creation
     /// </summary>
     public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
