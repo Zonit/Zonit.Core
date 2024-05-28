@@ -15,6 +15,7 @@
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
 		<PackageReference Include="MudBlazor" />
 		<PackageReference Include="Zonit.Extensions.Cultures" />
+		<PackageReference Include="Zonit.Extensions.Identity" />
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">
