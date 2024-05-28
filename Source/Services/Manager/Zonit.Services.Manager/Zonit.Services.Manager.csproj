@@ -4,7 +4,7 @@
 		<StaticWebAssetBasePath>Dashboard</StaticWebAssetBasePath>
 		<IsPackable>true</IsPackable>
 		
-		<AssemblyVersion>0.0.26</AssemblyVersion>
+		<AssemblyVersion>0.0.31</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 	</PropertyGroup>
@@ -14,6 +14,7 @@
 		<PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
 		<PackageReference Include="MudBlazor" />
+		<PackageReference Include="Zonit.Extensions.Cultures" />
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">
@@ -21,11 +22,8 @@
 	</ItemGroup>-->
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Extensions\Cultures\Zonit.Extensions.Cultures.Abstractions\Zonit.Extensions.Cultures.Abstractions.csproj" />
-	  <ProjectReference Include="..\..\..\Extensions\Cultures\Zonit.Extensions.Cultures\Zonit.Extensions.Cultures.csproj" />
-	  <ProjectReference Include="..\..\..\Extensions\Identity\Zonit.Extensions.Identity.Abstractions\Zonit.Extensions.Identity.Abstractions.csproj" />
 	  <ProjectReference Include="..\..\..\Extensions\Identity\Zonit.Extensions.Identity\Zonit.Extensions.Identity.csproj" />
-	  <ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj" />
+	  <ProjectReference Include="..\..\..\Extensions\Organizations\Zonit.Extensions.Organizations\Zonit.Extensions.Organizations.csproj" />
 	  <ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj" />
 	</ItemGroup>
 

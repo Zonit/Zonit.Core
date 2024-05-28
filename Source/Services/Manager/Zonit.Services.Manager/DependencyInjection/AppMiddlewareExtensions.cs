@@ -45,7 +45,7 @@ public static class AppMiddlewareExtensions
 
             app.UseIdentityExtension();
             app.UseCookiesExtension();
-            app.UseCultureExtension();
+            app.UseCulturesExtension();
 
             app.UseEndpoints(endpoints =>
             {

@@ -4,6 +4,7 @@ using Zonit.Extensions;
 using Zonit.Extensions.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Zonit.Extensions.Identity.Abstractions.Models;
+using Zonit.Extensions.Organizations;
 
 namespace Zonit.Services;
 
@@ -16,6 +17,7 @@ public static class ServiceCollectionExtensions
         services.AddCulturesExtension();
         services.AddIdentityExtension();
         services.AddCookiesExtension();
+        services.AddOrganizationsExtension();
         services.AddNavigationsExtension();
 
         services.AddAntiforgery();

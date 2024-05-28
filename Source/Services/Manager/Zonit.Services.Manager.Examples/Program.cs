@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Hosting.StaticWebAssets;
 using Zonit.Extensions;
+using Zonit.Extensions.Organizations;
+using Zonit.Services.Manager.Examples.Services;
 using Zonit.Services.Manager.Examples.Components;
 
 namespace Zonit.Services.Manager.Examples
@@ -11,6 +13,11 @@ namespace Zonit.Services.Manager.Examples
             var builder = WebApplication.CreateBuilder(args);
             builder.Services.AddManagerService();
             builder.Services.AddTestPresentation();
+
+            // Register test services
+            builder.Services.AddTransient<IOrganizationManager, OrganizationService>();
+            builder.Services.AddTransient<IUserOrganizationManager, UserOrganization>();
+            //builder.Services.AddScoped<IWorkspaceManager, WorkspaceService>();
 
             //builder.WebHost.UseStaticWebAssets();
 

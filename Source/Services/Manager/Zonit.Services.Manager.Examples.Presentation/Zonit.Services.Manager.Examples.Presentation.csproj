@@ -10,10 +10,11 @@
 	<ItemGroup>
 		<PackageReference Include="Microsoft.AspNetCore.Components.Web" />
 		<PackageReference Include="MudBlazor" />
+		<PackageReference Include="Zonit.Extensions.Cultures" />
 	</ItemGroup>
 	
 	<ItemGroup>
-		<ProjectReference Include="..\..\..\Extensions\Cultures\Zonit.Extensions.Cultures\Zonit.Extensions.Cultures.csproj" />
+		<ProjectReference Include="..\..\..\Extensions\Organizations\Zonit.Extensions.Organizations.Abstractions\Zonit.Extensions.Organizations.Abstractions.csproj" />
 		<ProjectReference Include="..\..\..\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj" />
 	</ItemGroup>
 </Project>

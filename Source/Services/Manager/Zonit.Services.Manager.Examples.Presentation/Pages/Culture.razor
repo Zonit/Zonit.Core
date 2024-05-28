@@ -1,0 +1,18 @@
+﻿@* @page "/culture"
+@using Zonit.Extensions.Cultures
+@implements IDisposable
+@inject ICultureProvider Culture
+
+@Culture.Translate("Hello {0}", "user")
+
+@code{
+    protected override void OnInitialized()
+    {
+        Culture.OnChange += StateHasChanged;
+    }
+
+    public void Dispose()
+    {
+        Culture.OnChange -= StateHasChanged;
+    }
+} *@

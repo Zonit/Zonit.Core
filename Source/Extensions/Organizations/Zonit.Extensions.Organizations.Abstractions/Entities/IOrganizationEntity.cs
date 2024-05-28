@@ -1,4 +1,4 @@
-﻿namespace Zonit.Extensions.Organizations.Abstractions.Entities;
+﻿namespace Zonit.Extensions.Organizations;
 
 public interface IOrganizationEntity
 {
@@ -10,5 +10,5 @@ public interface IOrganizationEntity
     /// <summary>
     /// Data of the organization
     /// </summary>
-    public Organization? Organization { get; }
+    //public OrganizationModel? Organization { get; }
 }

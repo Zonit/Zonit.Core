@@ -66,6 +66,9 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Website.Abstractions", "Source\Extensions\Website\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj", "{00EAEAFE-71D8-4E4C-A73D-B9B025C01CA3}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Cultures", "Cultures", "{BB25C094-EF08-45B0-860E-11A62C1E6C9E}"
+	ProjectSection(SolutionItems) = preProject
+		Source\Extensions\Cultures\Readme.md = Source\Extensions\Cultures\Readme.md
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Cultures.Abstractions", "Source\Extensions\Cultures\Zonit.Extensions.Cultures.Abstractions\Zonit.Extensions.Cultures.Abstractions.csproj", "{7DBF115B-5B4D-4DD1-8894-188331279FD2}"
 EndProject
@@ -76,6 +79,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Website", "Source\Extensions\Website\Zonit.Extensions.Website\Zonit.Extensions.Website.csproj", "{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Identity", "Source\Extensions\Identity\Zonit.Extensions.Identity\Zonit.Extensions.Identity.csproj", "{52303E7D-A0D1-4811-AA07-C8FBCD365A08}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Zonit.Extensions.Organizations", "Source\Extensions\Organizations\Zonit.Extensions.Organizations\Zonit.Extensions.Organizations.csproj", "{3BDA964F-0128-438D-8DF3-898500D39F21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -159,6 +164,10 @@ Global
 		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{52303E7D-A0D1-4811-AA07-C8FBCD365A08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BDA964F-0128-438D-8DF3-898500D39F21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BDA964F-0128-438D-8DF3-898500D39F21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BDA964F-0128-438D-8DF3-898500D39F21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BDA964F-0128-438D-8DF3-898500D39F21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -192,6 +201,7 @@ Global
 		{D6E12315-F7AE-44CE-BFDA-D17F98F1FC76} = {BB25C094-EF08-45B0-860E-11A62C1E6C9E}
 		{BADCCA8F-9DBE-4632-90E4-AEFA43AFE6E4} = {8A8B0D31-375E-4C2F-8D94-A1A193F58A13}
 		{52303E7D-A0D1-4811-AA07-C8FBCD365A08} = {ECB7B13B-4067-42AA-AD60-AF9636CE5C65}
+		{3BDA964F-0128-438D-8DF3-898500D39F21} = {167CE2C7-4324-466E-B60C-80F520793080}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {A245F2EE-E154-4E0A-9727-946ED77DA4CB}

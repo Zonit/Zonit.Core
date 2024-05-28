@@ -7,7 +7,7 @@
 @inject ICultureProvider Culture
 @inject ICookieProvider Cookie
 
-<MudAppBar Elevation="1">
+<MudAppBar Elevation="1" Style="z-index: 1000;">
     <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
     <MudSpacer />
     <MudTooltip Text=@Culture.Translate(_darkModeTooltip) Placement="Placement.Bottom">

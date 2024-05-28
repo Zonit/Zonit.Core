@@ -77,45 +77,8 @@
                         <MudDivider Class="my-2" />
                     }
 
-                    <MudSelect T="string" Class="mx-4" Value=@Culture.GetCulture Label=@Culture.Translate("Select language") ValueChanged=SetCulture Underline=false>
-                        @*                         <MudSelectItem Value="@("en-us")">
-                        <svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-gb" height="14" class="aspect-video mr-1" viewBox="0 0 640 480">
-                        <path fill="#012169" d="M0 0h640v480H0z" />
-                        <path fill="#FFF" d="m75 0 244 181L562 0h78v62L400 241l240 178v61h-80L320 301 81 480H0v-60l239-178L0 64V0h75z" />
-                        <path fill="#C8102E" d="m424 281 216 159v40L369 281h55zm-184 20 6 35L54 480H0l240-179zM640 0v3L391 191l2-44L590 0h50zM0 0l239 176h-60L0 42V0z" />
-                        <path fill="#FFF" d="M241 0v480h160V0H241zM0 160v160h640V160H0z" />
-                        <path fill="#C8102E" d="M0 193v96h640v-96H0zM273 0v480h96V0h-96z" />
-                        </svg> English
-                        </MudSelectItem>
-                        <MudSelectItem Value="@("pl-pl")">
-                        <svg xmlns="http://www.w3.org/2000/svg" id="flag-icons-pl" height="14" class="aspect-video mr-1" viewBox="0 0 640 480">
-                        <g fill-rule="evenodd">
-                        <path fill="#fff" d="M640 480H0V0h640z" />
-                        <path fill="#dc143c" d="M640 480H0V240h640z" />
-                        </g>
-                        </svg> Polish
-                        </MudSelectItem> *@
-
-                        <MudSelectItem Value="@("en-us")">English</MudSelectItem>
-                        <MudSelectItem Value="@("ar-sa")">Arabic</MudSelectItem>
-                        <MudSelectItem Value="@("fr-fr")">French</MudSelectItem>
-                        <MudSelectItem Value="@("de-de")">German</MudSelectItem>
-                        <MudSelectItem Value="@("es-es")">Spanish</MudSelectItem>
-                        <MudSelectItem Value="@("it-it")">Italian</MudSelectItem>
-                        <MudSelectItem Value="@("nl-nl")">Dutch</MudSelectItem>
-                        <MudSelectItem Value="@("sv-se")">Swedish</MudSelectItem>
-                        <MudSelectItem Value="@("da-dk")">Danish</MudSelectItem>
-                        <MudSelectItem Value="@("no-no")">Norwegian</MudSelectItem>
-                        <MudSelectItem Value="@("fi-fi")">Finnish</MudSelectItem>
-                        <MudSelectItem Value="@("ru-ru")">Russian</MudSelectItem>
-                        <MudSelectItem Value="@("pl-pl")">Polish</MudSelectItem>
-                        <MudSelectItem Value="@("cs-cz")">Czech</MudSelectItem>
-                        <MudSelectItem Value="@("hu-hu")">Hungarian</MudSelectItem>
-                        <MudSelectItem Value="@("sk-sk")">Slovak</MudSelectItem>
-                        <MudSelectItem Value="@("pt-pt")">Portuguese</MudSelectItem>
-                    </MudSelect>
-
-                    <MudDivider Class="my-2" />
+                    <Zonit.Services.Manager.Areas.Manager.Components.Organizations.ChangeOrganization/>
+                    <Zonit.Services.Manager.Areas.Manager.Components.Organizations.ChangeCulture/>
 
                     <Nav AreaType="AreaType.ManagerRight" />
 
@@ -222,17 +185,5 @@
             _drawerOpen = false;
             StateHasChanged();
         }
-    }
-
-    @using System.Globalization
-
-    public async void SetCulture(string culture)
-    {
-        // TODO: Pomyśl nad dodatkowym interfejsem, który zmieni kulturę i wywoła poniższy kod
-        await JSRuntime.InvokeVoidAsync("blazorCulture.set", culture);
-        await JSRuntime.InvokeVoidAsync("eval", $"document.cookie = 'Culture={culture}; expires={DateTime.UtcNow.AddDays(365):R}; path=/;'");
-        CultureRepository.SetCulture(culture);
-
-        await Task.CompletedTask;
     }
 }

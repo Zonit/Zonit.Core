@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Hosting;
 using Zonit.Extensions.Website;
 using Zonit.Extensions.Website.Abstractions.Navigations.Types;
+using Zonit.Services.Manager.Examples.Presentation.Pages;
 
 namespace Zonit.Services.Manager.Examples.Presentation.Data;
 
@@ -55,6 +56,14 @@ internal class NavData(INavigationProvider _navigation) : IHostedService
             Order = 60,
             Icon = IconData.GiftIcon,
             Link = new("claims-principle-data", "claims-principle-data"),
+        });
+        _navigation.Add(new()
+        {
+            Title = Organizations.Route,
+            Area = AreaType.Manager,
+            Order = 60,
+            Icon = IconData.OrganizationIcon,
+            Link = new(Organizations.Route, Organizations.Route),
         });
 
         _navigation.Add(new()
