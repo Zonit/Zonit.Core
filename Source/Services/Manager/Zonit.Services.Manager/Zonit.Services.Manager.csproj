@@ -4,7 +4,7 @@
 		<StaticWebAssetBasePath>Dashboard</StaticWebAssetBasePath>
 		<IsPackable>true</IsPackable>
 		
-		<AssemblyVersion>0.0.31</AssemblyVersion>
+		<AssemblyVersion>0.0.33</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 	</PropertyGroup>
@@ -16,6 +16,7 @@
 		<PackageReference Include="MudBlazor" />
 		<PackageReference Include="Zonit.Extensions.Cultures" />
 		<PackageReference Include="Zonit.Extensions.Identity" />
+		<PackageReference Include="Zonit.Extensions.Organizations" />
 	</ItemGroup>
 
 	<!--<ItemGroup Condition="'$(Configuration)' == 'Debug'">

@@ -29,6 +29,7 @@ public class UserOrganization : IUserOrganizationManager
 
     public async Task<WorkspaceModel> InicjalizeAsync()
     {
+        await Task.Delay(TimeSpan.FromSeconds(1));
         return await Task.FromResult(ExampleData.Last());
     }
 

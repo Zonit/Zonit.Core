@@ -17,12 +17,12 @@ internal class OrganizationService : IOrganizationManager
         }
     ];
 
-    public Task<OrganizationModel?> GetAsync(Guid id)
+    public async Task<OrganizationModel?> GetAsync(Guid id)
     {
         OrganizationModel? model = default;
 
         model = organizations?.FirstOrDefault(x => x.Id == id);
 
-        return Task.FromResult(model);
+        return await Task.FromResult(model);
     }
 }

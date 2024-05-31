@@ -40,5 +40,7 @@
     <PackageVersion Include="Zonit.Abstractions" Version="0.0.1" />
     <PackageVersion Include="Zonit.Extensions.Cultures" Version="0.1.1" />
     <PackageVersion Include="Zonit.Extensions.Identity" Version="0.1.0" />
+	<PackageVersion Include="Zonit.Extensions.Organizations" Version="0.1.0" />
+	<PackageVersion Include="Zonit.Extensions.Organizations.Abstractions" Version="0.1.0" />
   </ItemGroup>
 </Project>

@@ -6,12 +6,18 @@
 @inject IWorkspaceManager WorkspaceManager
 
 @inject ICultureProvider Culture
-
+@inject NavigationManager NavigationManager
 
 @if(Workspace.Organization is not null)
 {
 
-    <MudButton Variant="Variant.Text" FullWidth=true OnClick="OpenDrawer">@Culture.Translate("Your organizations")</MudButton>
+@*     <MudAvatar Color="Color.Surface" Rounded="true" Size="Size.Small">
+        @Workspace.Organization.Name[0]
+    </MudAvatar> *@
+
+    <MudTooltip Text="@Culture.Translate("Change organizations")" Arrow="true" Placement="Placement.Top" RootStyle="width: 100%;">
+        <MudButton Variant="Variant.Text" FullWidth=true OnClick="OpenDrawer">@Workspace.Organization.Name</MudButton>
+    </MudTooltip>
 
     <MudDivider Class="my-2" />
 
@@ -47,7 +53,7 @@
                     </MudList>
                 }
                 <MudDivider Class="my-2" />
-                <MudButton FullWidth="true" Href="Organizations">@Culture.Translate("Manage organizations")</MudButton>
+                <MudButton FullWidth="true" OnClick="GoToManage">@Culture.Translate("Manage organizations")</MudButton>
             </MudPaper>
         </MudNavMenu>
     </MudDrawer>
@@ -76,6 +82,12 @@
 
     void OpenDrawer()
         => open = !open;
+
+    void GoToManage()
+    {
+        open = false;
+        NavigationManager.NavigateTo("Organizations");
+    }
 
     public async Task SwitchAsync(Guid organizationId)
     {

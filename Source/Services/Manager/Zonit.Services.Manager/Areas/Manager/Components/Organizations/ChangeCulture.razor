@@ -7,7 +7,10 @@
 
 @if(CultureManager.SupportedCultures is not null)
 {
-    <MudButton Variant="Variant.Text" StartIcon="@currentLanguage.IconFlag" FullWidth=true OnClick="OpenDrawer">@Culture.Translate(currentLanguage.EnglishName)</MudButton>
+
+    <MudTooltip Text="@Culture.Translate("Change language")" Arrow="true" Placement="Placement.Top" RootStyle="width: 100%;">
+        <MudButton Variant="Variant.Text" StartIcon="@currentLanguage.IconFlag" FullWidth=true OnClick="OpenDrawer">@Culture.Translate(currentLanguage.EnglishName)</MudButton>
+    </MudTooltip>
 
     <MudDivider Class="my-2" />
 
