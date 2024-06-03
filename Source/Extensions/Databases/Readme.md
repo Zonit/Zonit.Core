@@ -6,11 +6,15 @@ It speeds up the work of creating repositories, with the help of abstractions an
 ```
 Install-Package Zonit.Extensions.Databases.Abstractions 
 ```
+![NuGet Version](https://img.shields.io/nuget/v/Zonit.Extensions.Databases.Abstractions.svg)
+![NuGet](https://img.shields.io/nuget/dt/Zonit.Extensions.Databases.Abstractions.svg)
 
 **Nuget Package Extensions SqlServer**
 ```
 Install-Package Zonit.Extensions.Databases.SqlServer
 ```
+![NuGet Version](https://img.shields.io/nuget/v/Zonit.Extensions.Databases.SqlServer.svg)
+![NuGet](https://img.shields.io/nuget/dt/Zonit.Extensions.Databases.SqlServer.svg)
 
 ### Example:
 **Model**

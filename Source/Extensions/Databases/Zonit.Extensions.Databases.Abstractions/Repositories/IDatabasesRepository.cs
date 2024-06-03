@@ -39,5 +39,5 @@ public interface IDatabasesRepository<TEntity> : IDisposable
     /// <returns></returns>
     Task<int?> UpdateRangeAsync(Action<TEntity> updateAction, CancellationToken cancellationToken = default);
 
-    Task<int> GetCountAsync();
+    Task<int> GetCountAsync(CancellationToken cancellationToken = default);
 }

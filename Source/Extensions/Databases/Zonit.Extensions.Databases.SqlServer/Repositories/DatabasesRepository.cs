@@ -1,7 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Query.SqlExpressions;
 using System.Linq.Expressions;
-using Zonit.Extensions.Databases.Abstractions.Exceptions;
 using Zonit.Extensions.Databases.Abstractions.Repositories;
 using Zonit.Extensions.Databases.SqlServer.Services;
 
@@ -21,7 +19,7 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
 
     public async Task<IReadOnlyCollection<TEntity>?> GetAsync(CancellationToken cancellationToken = default)
     {
-        var context = await _context.CreateDbContextAsync(cancellationToken);
+        using var context = await _context.CreateDbContextAsync(cancellationToken);
 
         var entitie = context.Set<TEntity>()
             .AsSplitQuery()
@@ -49,7 +47,7 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
 
     public async Task<int?> UpdateRangeAsync(Action<TEntity> updateAction, CancellationToken cancellationToken = default)
     {
-        var context = await _context.CreateDbContextAsync(cancellationToken);
+        using var context = await _context.CreateDbContextAsync(cancellationToken);
 
         var entitie = context.Set<TEntity>()
             .AsSplitQuery()
@@ -75,9 +73,9 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
     public async Task<IReadOnlyCollection<TDto>?> GetAsync<TDto>(CancellationToken cancellationToken = default)
         => MappingService.Dto<TDto>(await this.GetAsync(cancellationToken));
     
-    public async Task<int> GetCountAsync()
+    public async Task<int> GetCountAsync(CancellationToken cancellationToken = default)
     {
-        var context = await _context.CreateDbContextAsync();
+        using var context = await _context.CreateDbContextAsync(cancellationToken);
 
         var entitie = context.Set<TEntity>()
             .AsNoTracking();
@@ -85,7 +83,7 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
         if (FilterExpression is not null)
             entitie = entitie.Where(FilterExpression);
 
-        return await entitie.CountAsync().ConfigureAwait(false);
+        return await entitie.CountAsync(cancellationToken).ConfigureAwait(false);
     }
 
     public IDatabasesRepository<TEntity> Include(Expression<Func<TEntity, object>> includeExpression)
@@ -139,12 +137,21 @@ public abstract class DatabasesRepository<TEntity, TContext>(IDbContextFactory<T
 
     public void Dispose()
     {
-        IncludeExpressions = null;
-        FilterExpression = null;
-        OrderByColumnSelector = null;
-        OrderByDescendingColumnSelector = null;
-        SelectColumns = null;
-        SkipCount = null;
-        TakeCount = null;
+        Dispose(true);
+        GC.SuppressFinalize(this);
+    }
+
+    protected virtual void Dispose(bool disposing)
+    {
+        if (disposing)
+        {
+            IncludeExpressions = null;
+            FilterExpression = null;
+            OrderByColumnSelector = null;
+            OrderByDescendingColumnSelector = null;
+            SelectColumns = null;
+            SkipCount = null;
+            TakeCount = null;
+        }
     }
 }
