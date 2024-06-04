@@ -45,10 +45,10 @@
                 @if (Organizations is not null)
                 {
                     <MudText Typo="Typo.body1">@Culture.Translate("Your organizations")</MudText>
-                    <MudList T=string>
+                    <MudList T=Guid @bind-SelectedValue=selectedOrganization>
                         @foreach (var organization in Organizations)
                         {
-                            <MudListItem Disabled="@(Workspace.Organization.Id == organization.Id)" OnClick="(async () => await SwitchAsync(organization.Id))">@organization.Name</MudListItem>
+                            <MudListItem Value="@organization.Id" Text="@organization.Name" OnClick="(async () => await SwitchAsync(organization.Id))"/>
                         }
                     </MudList>
                 }
@@ -61,6 +61,7 @@
 
 @code{
     bool open;
+    Guid selectedOrganization;
     IReadOnlyCollection<OrganizationModel>? Organizations = [];
 
     protected override async Task OnInitializedAsync()
@@ -72,6 +73,9 @@
     {
         Culture.OnChange += StateHasChanged;
         Workspace.OnChange += StateHasChanged;
+
+        if(Workspace.Organization is not null)
+            selectedOrganization = Workspace.Organization.Id;
     }
 
     public void Dispose()

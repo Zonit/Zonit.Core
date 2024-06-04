@@ -3,7 +3,6 @@ using MudBlazor.Services;
 using Zonit.Extensions;
 using Zonit.Extensions.Identity;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using Zonit.Extensions.Identity.Abstractions.Models;
 using Zonit.Extensions.Organizations;
 
 namespace Zonit.Services;
@@ -15,7 +14,7 @@ public static class ServiceCollectionExtensions
         services.AddHttpContextAccessor();
 
         services.AddCulturesExtension();
-        services.AddIdentityExtension();
+        services.AddIdentityExtension();            // Fixed
         services.AddCookiesExtension();
         services.AddOrganizationsExtension();
         services.AddNavigationsExtension();
@@ -50,38 +49,6 @@ public static class ServiceCollectionExtensions
 
         services.AddMudServices();
 
-#if DEBUG
-        services.TryAddTransient<IUserProvider, UserTest>();
-        services.TryAddTransient<ISessionProvider, SessionTest>();
-#endif
-
         return services;
     }
 }
-
-#if DEBUG
-public class UserTest : IUserProvider
-{
-    UserModel? UserModel { get; set; } = new()
-    {
-        Name = "NoUser",
-        Roles = ["User", "TwojaStara"]
-    };
-
-    public Task<UserModel?> GetByIdAsync(Guid id)
-        => Task.FromResult(UserModel);
-
-    public Task<UserModel?> GetByUserNameAsync(string userName)
-        => Task.FromResult(UserModel);
-}
-
-public class SessionTest : ISessionProvider
-{
-    public async Task<UserModel?> GetByTokenAsync(string token)
-        => new UserModel
-        {
-            Name = "NoUser",
-            Roles = ["User", "TwojaStara"]
-        };
-}
-#endif

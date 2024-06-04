@@ -4,7 +4,7 @@
 		<StaticWebAssetBasePath>Dashboard</StaticWebAssetBasePath>
 		<IsPackable>true</IsPackable>
 		
-		<AssemblyVersion>0.0.33</AssemblyVersion>
+		<AssemblyVersion>0.0.36</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 	</PropertyGroup>
