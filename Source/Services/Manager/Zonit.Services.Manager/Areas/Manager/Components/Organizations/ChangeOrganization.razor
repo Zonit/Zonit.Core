@@ -42,11 +42,11 @@
                 </MudText>
 
                 <MudDivider Class="my-4" />          
-                @if (Organizations is not null)
+                @if (WorkspaceManager.Organizations is not null)
                 {
                     <MudText Typo="Typo.body1">@Culture.Translate("Your organizations")</MudText>
                     <MudList T=Guid @bind-SelectedValue=selectedOrganization>
-                        @foreach (var organization in Organizations)
+                        @foreach (var organization in WorkspaceManager.Organizations)
                         {
                             <MudListItem Value="@organization.Id" Text="@organization.Name" OnClick="(async () => await SwitchAsync(organization.Id))"/>
                         }
@@ -62,12 +62,6 @@
 @code{
     bool open;
     Guid selectedOrganization;
-    IReadOnlyCollection<OrganizationModel>? Organizations = [];
-
-    protected override async Task OnInitializedAsync()
-    {
-        Organizations = await WorkspaceManager.GetOrganizationsAsync();
-    }
 
     protected override void OnInitialized()
     {

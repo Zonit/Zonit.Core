@@ -42,9 +42,9 @@
         <MudItem xs="12">
             <MudText Typo="Typo.h6" GutterBottom="true">@Culture.Translate("Your available organizations")</MudText>
             <MudPaper Class="pa-4">
-                @if (organizationModels is not null)
+                @if (workspaceManager.Organizations is not null)
                 {
-                    @foreach (var organization in organizationModels)
+                    @foreach (var organization in workspaceManager.Organizations)
                     {
                         <MudButton Variant="Variant.Filled" OnClick="async (e) => await SwitchOrgnaizationAsync(organization.Id)">Change to "@organization.Name" organization</MudButton><br/>
                     }
@@ -83,15 +83,8 @@
 @inject IWorkspaceManager workspaceManager
 
 @code{
-    IReadOnlyCollection<OrganizationModel>? organizationModels;
-
     async Task SwitchOrgnaizationAsync(Guid id)
     {
         await workspaceManager.SwitchOrganizationAsync(id);
-    }
-
-    protected override async Task OnInitializedAsync()
-    {
-        organizationModels = await workspaceManager.GetOrganizationsAsync();
     }
 }

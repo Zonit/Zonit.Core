@@ -1,9 +1,6 @@
 ﻿using MudBlazor;
 using MudBlazor.Services;
 using Zonit.Extensions;
-using Zonit.Extensions.Identity;
-using Microsoft.Extensions.DependencyInjection.Extensions;
-using Zonit.Extensions.Organizations;
 
 namespace Zonit.Services;
 
@@ -16,7 +13,7 @@ public static class ServiceCollectionExtensions
         services.AddCulturesExtension();
         services.AddIdentityExtension();            // Fixed
         services.AddCookiesExtension();
-        services.AddOrganizationsExtension();
+        services.AddOrganizationsExtension();       // Fixed
         services.AddNavigationsExtension();
 
         services.AddAntiforgery();
