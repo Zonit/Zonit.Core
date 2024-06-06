@@ -39,8 +39,8 @@
     <PackageVersion Include="Serilog.Sinks.File" Version="5.0.0" />
     <PackageVersion Include="Zonit.Abstractions" Version="0.0.1" />
     <PackageVersion Include="Zonit.Extensions.Cultures" Version="0.1.1" />
-    <PackageVersion Include="Zonit.Extensions.Identity" Version="0.1.3" />
-    <PackageVersion Include="Zonit.Extensions.Organizations" Version="0.1.3" />
-    <PackageVersion Include="Zonit.Extensions.Organizations.Abstractions" Version="0.1.3" />
+    <PackageVersion Include="Zonit.Extensions.Identity" Version="0.1.4" />
+    <PackageVersion Include="Zonit.Extensions.Organizations" Version="0.1.4" />
+    <PackageVersion Include="Zonit.Extensions.Organizations.Abstractions" Version="0.1.4" />
   </ItemGroup>
 </Project>
