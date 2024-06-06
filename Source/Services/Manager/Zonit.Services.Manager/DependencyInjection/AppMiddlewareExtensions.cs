@@ -43,9 +43,9 @@ public static class AppMiddlewareExtensions
                 return Task.CompletedTask;
             });
 
-            app.UseIdentityExtension();
             app.UseCookiesExtension();
             app.UseCulturesExtension();
+            app.UseIdentityExtension();
             app.UseOrganizationsExtension(); // It has to be after UseIdentityExtension!
 
             app.UseEndpoints(endpoints =>
