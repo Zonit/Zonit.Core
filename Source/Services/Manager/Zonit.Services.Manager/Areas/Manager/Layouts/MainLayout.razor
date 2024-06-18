@@ -77,8 +77,9 @@
                         <MudDivider Class="my-2" />
                     }
 
-                    <Zonit.Services.Manager.Areas.Manager.Components.Organizations.ChangeOrganization/>
-                    <Zonit.Services.Manager.Areas.Manager.Components.Organizations.ChangeCulture/>
+                    <Zonit.Services.Manager.Areas.Manager.Components.ChangeOrganization />
+                    <Zonit.Services.Manager.Areas.Manager.Components.ChangeProjects />
+                    <Zonit.Services.Manager.Areas.Manager.Components.ChangeCulture />
 
                     <Nav AreaType="AreaType.ManagerRight" />
 
@@ -151,7 +152,7 @@
     bool _drawerOpen = true;
     bool _drawerOpenMin = false;
     DrawerVariant _drawerVariant = DrawerVariant.Responsive;
-    bool _drawerRightOpen = false;
+    bool _drawerRightOpen = true;
     bool _isDarkMode = false;
     MudThemeProvider _mudThemeProvider = null!;
 

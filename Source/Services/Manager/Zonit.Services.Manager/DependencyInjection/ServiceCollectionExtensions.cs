@@ -14,6 +14,7 @@ public static class ServiceCollectionExtensions
         services.AddIdentityExtension();            // Fixed
         services.AddCookiesExtension();
         services.AddOrganizationsExtension();       // Fixed
+        services.AddProjectsExtension();            // Fixed
         services.AddNavigationsExtension();
 
         services.AddAntiforgery();

@@ -3,7 +3,7 @@ using Zonit.Extensions.Organizations;
 using Zonit.Services.Manager.Examples.Services;
 using Zonit.Services.Manager.Examples.Components;
 using Zonit.Extensions.Identity;
-using Zonit.Extensions;
+using Zonit.Extensions.Projects;
 
 namespace Zonit.Services.Manager.Examples
 {
@@ -27,10 +27,11 @@ namespace Zonit.Services.Manager.Examples
             // Register test services
             builder.Services.AddTransient<IOrganizationManager, OrganizationService>();
             builder.Services.AddTransient<IUserOrganizationManager, UserOrganization>();
-            //builder.Services.AddScoped<IWorkspaceManager, WorkspaceService>();
 
             builder.Services.AddTransient<IUserProvider, UserService>();
             builder.Services.AddTransient<ISessionProvider, SessionService>();
+
+            builder.Services.AddTransient<IOrganizationProjectManager, ProjectService>();
 
             //builder.WebHost.UseStaticWebAssets();
 

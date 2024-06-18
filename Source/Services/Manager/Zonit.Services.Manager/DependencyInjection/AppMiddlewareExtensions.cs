@@ -47,6 +47,7 @@ public static class AppMiddlewareExtensions
             app.UseCulturesExtension();
             app.UseIdentityExtension();
             app.UseOrganizationsExtension(); // It has to be after UseIdentityExtension!
+            app.UseProjectsExtension();
 
             app.UseEndpoints(endpoints =>
             {

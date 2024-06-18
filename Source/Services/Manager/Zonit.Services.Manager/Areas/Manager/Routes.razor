@@ -19,10 +19,10 @@
         </AuthorizeRouteView>
         <FocusOnNavigate RouteData="@routeData" Selector="h1" />
     </Found>
+
     <NotFound>
-        <PageTitle>Not found</PageTitle>
-        <LayoutView Layout="@typeof(Layouts.MainLayout)">
-            <p role="alert">Sorry, there's nothing at this address.</p>
+        <LayoutView Layout="@typeof(Layouts.ErrorLayout)">
+            <Zonit.Services.Manager.Areas.Manager.Pages.Errors._404 />
         </LayoutView>
     </NotFound>
 </Router>
@@ -31,3 +31,4 @@
 <ZonitCulturesExtension />
 <ZonitIdentityExtension />
 <ZonitOrganizationsExtension />
+<ZonitProjectsExtension />

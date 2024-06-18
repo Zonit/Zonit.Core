@@ -11,13 +11,20 @@
 @if(Workspace.Organization is not null)
 {
 
-@*     <MudAvatar Color="Color.Surface" Rounded="true" Size="Size.Small">
-        @Workspace.Organization.Name[0]
-    </MudAvatar> *@
+@*     <MudStack Justify="Justify.Center" Row="true">
+        <div>
+            <MudAvatar Color="Color.Surface" Rounded="true" Style="height: 100%">
+                @Workspace.Organization.Name[0]
+            </MudAvatar>
+        </div>
+        <div> *@
+            <MudTooltip Text="@Culture.Translate("Change organizations")" Arrow="true" Placement="Placement.Top" RootStyle="width: 100%;">
+                <MudButton Variant="Variant.Text" FullWidth=true OnClick="OpenDrawer">@Workspace.Organization.Name</MudButton>
+            </MudTooltip>
+@*         </div>
+    </MudStack> *@
 
-    <MudTooltip Text="@Culture.Translate("Change organizations")" Arrow="true" Placement="Placement.Top" RootStyle="width: 100%;">
-        <MudButton Variant="Variant.Text" FullWidth=true OnClick="OpenDrawer">@Workspace.Organization.Name</MudButton>
-    </MudTooltip>
+    
 
     <MudDivider Class="my-2" />
 
