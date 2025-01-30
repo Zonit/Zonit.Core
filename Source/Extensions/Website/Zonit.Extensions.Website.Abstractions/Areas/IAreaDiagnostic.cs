@@ -1,5 +1,5 @@
 ﻿namespace Zonit.Extensions.Website;
 
-public interface IAreaDiagnostics : IArea
+public interface IAreaDiagnostic : IArea
 {
 }
