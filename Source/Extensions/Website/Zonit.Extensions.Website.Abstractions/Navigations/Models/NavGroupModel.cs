@@ -11,5 +11,6 @@ public class NavGroupModel
     public bool Expanded { get; set; } = false;
     public List<NavLinkModel>? Children { get; set; }
     public AreaType? Area { get; set; }
+    public string? Position { get; set; }
     public int Order { get; set; }
 }

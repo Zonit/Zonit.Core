@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
-		<AssemblyVersion>0.0.32</AssemblyVersion>
+		<AssemblyVersion>0.0.33</AssemblyVersion>
 		<FileVersion>$(AssemblyVersion)</FileVersion>
 		<Version>$(AssemblyVersion)</Version>
 	</PropertyGroup>
@@ -18,5 +18,5 @@
 	<ItemGroup>
 	  <ProjectReference Include="..\Zonit.Extensions.Website.Abstractions\Zonit.Extensions.Website.Abstractions.csproj" />
 	</ItemGroup>
-	
+
 </Project>

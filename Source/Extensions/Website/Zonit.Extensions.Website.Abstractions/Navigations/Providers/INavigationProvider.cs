@@ -16,5 +16,5 @@ public interface INavigationProvider
     /// </summary>
     /// <param name="area"></param>
     /// <returns></returns>
-    public IReadOnlyList<NavGroupModel>? Get(AreaType area);
+    public IReadOnlyList<NavGroupModel>? Get(AreaType area, string? position);
 }

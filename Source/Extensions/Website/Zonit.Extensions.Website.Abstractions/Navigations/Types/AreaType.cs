@@ -6,5 +6,5 @@ public enum AreaType
     Manager,
     ManagerRight,
     Management,
-    Dashboard
+    Diagnostic
 }

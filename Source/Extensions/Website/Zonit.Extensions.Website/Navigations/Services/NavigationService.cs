@@ -7,9 +7,9 @@ internal class NavigationService : INavigationProvider
 {
     readonly IList<NavGroupModel> _navigationModels = [];
 
-    public IReadOnlyList<NavGroupModel>? Get(AreaType area)
+    public IReadOnlyList<NavGroupModel>? Get(AreaType area, string? position)
         => _navigationModels?
-            .Where(x => x.Area == area)
+            .Where(x => x.Area == area && x.Position == position)
             .OrderBy(x => x.Order)
             .ToList();
 
