@@ -4,7 +4,6 @@ public enum AreaType
 {
     Web,
     Manager,
-    ManagerRight,
     Management,
     Diagnostic
 }
