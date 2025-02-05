@@ -2,11 +2,21 @@
 
 internal class BreadcrumbsService : IBreadcrumbsProvider
 {
-    IList<BreadcrumbsModel> _breadcrumbsModels = [];
+    IList<BreadcrumbsModel>? _breadcrumbsModel = [];
 
-    public IReadOnlyList<BreadcrumbsModel> Get()
-        => _breadcrumbsModels.ToList();
+    public event Action? OnChange;
 
-    public void Add(IList<BreadcrumbsModel> breadcrumbs)
-        => _breadcrumbsModels = breadcrumbs;
+    public IReadOnlyList<BreadcrumbsModel>? Get()
+        => _breadcrumbsModel?.ToList();
+
+    public void Initialize(IList<BreadcrumbsModel>? breadcrumbs)
+    {
+        if (_breadcrumbsModel != breadcrumbs)
+        {
+            _breadcrumbsModel = breadcrumbs;
+            StateChanged();
+        }
+    }
+
+    public void StateChanged() => OnChange?.Invoke();
 }
