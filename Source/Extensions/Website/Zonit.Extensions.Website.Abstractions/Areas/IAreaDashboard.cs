@@ -1,5 +1,5 @@
 ﻿namespace Zonit.Extensions.Website;
 
-internal class IAreaDashboard : IArea
+public class IAreaDashboard : IArea
 {
 }

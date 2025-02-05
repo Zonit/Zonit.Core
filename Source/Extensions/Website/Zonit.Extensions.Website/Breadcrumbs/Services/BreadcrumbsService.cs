@@ -11,11 +11,8 @@ internal class BreadcrumbsService : IBreadcrumbsProvider
 
     public void Initialize(IList<BreadcrumbsModel>? breadcrumbs)
     {
-        if (_breadcrumbsModel != breadcrumbs)
-        {
-            _breadcrumbsModel = breadcrumbs;
-            StateChanged();
-        }
+        _breadcrumbsModel = breadcrumbs;
+        StateChanged();
     }
 
     public void StateChanged() => OnChange?.Invoke();
